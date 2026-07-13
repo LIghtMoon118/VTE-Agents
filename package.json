@@ -1,0 +1,16 @@
+{
+  "name": "vte-agent-mvp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "VTE specialty agent MVP for demo, deployment, and integration.",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check public/app.js && node --check scripts/import-vte-matrix.js && node --check scripts/discover-literature-scope.js",
+    "import:vte-matrix": "node scripts/import-vte-matrix.js",
+    "discover:pubmed": "node scripts/discover-literature-scope.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
