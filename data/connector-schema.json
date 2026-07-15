@@ -1,0 +1,188 @@
+{
+  "version": "0.1.0",
+  "purpose": "VTE 智能体一期接口草案，用于对接第三方 VTE 管理系统、EMR、护理系统和随访系统。",
+  "integrationGoal": "在不替换院内既有业务系统的前提下，把 VTE 智能体作为可插拔的风险解释、流程质控、任务协同和随访增强层接入。",
+  "inputModes": [
+    {
+      "mode": "text_only",
+      "description": "离线演示或脱敏验证阶段，直接传入脱敏文本。",
+      "minimumPayload": ["text"]
+    },
+    {
+      "mode": "patient_context",
+      "description": "推荐的结构化接入方式。系统先传结构化字段，再由智能体生成分析结果。",
+      "minimumPayload": ["patientContext.patientToken", "patientContext.encounterToken", "patientContext.department", "patientContext.age", "patientContext.sex"]
+    },
+    {
+      "mode": "hybrid_context",
+      "description": "结构化字段与病历摘要并行输入，适合试点期兼容 HIS/EMR/LIS/护理文本。",
+      "minimumPayload": ["patientContext", "patientContext.freeText"]
+    }
+  ],
+  "recommendedTriggers": [
+    {
+      "node": "入院24小时内",
+      "purpose": "完成首次 VTE 风险识别、出血禁忌核查和初始预防建议。"
+    },
+    {
+      "node": "术前",
+      "purpose": "识别围术期风险峰值、抗凝停启和机械预防准备。"
+    },
+    {
+      "node": "术后24小时至72小时",
+      "purpose": "生成复评提醒、护理执行任务和高危患者优先级。"
+    },
+    {
+      "node": "病情变化/急症线索触发",
+      "purpose": "识别疑似 PE、急性症状性 DVT、股青肿/肢体灌注风险等急症路径。"
+    },
+    {
+      "node": "出院前",
+      "purpose": "生成出院教育、延长期预防评估和随访任务。"
+    }
+  ],
+  "requiredFields": [
+    "patientContext.patientToken",
+    "patientContext.encounterToken",
+    "patientContext.department",
+    "patientContext.age",
+    "patientContext.sex"
+  ],
+  "recommendedFields": [
+    "patientContext.admissionTime",
+    "patientContext.diagnoses",
+    "patientContext.procedures",
+    "patientContext.labs",
+    "patientContext.orders",
+    "patientContext.nursingRecords",
+    "patientContext.freeText"
+  ],
+  "patientContext": {
+    "patientToken": "脱敏患者标识，不使用住院号、身份证号等可识别信息",
+    "encounterToken": "脱敏就诊标识",
+    "department": "科室或病区",
+    "admissionTime": "入院时间，ISO 8601",
+    "age": "年龄，可用分组替代",
+    "sex": "性别",
+    "diagnoses": ["诊断名称或编码"],
+    "procedures": ["手术或操作名称"],
+    "labs": [
+      {
+        "name": "检验项目",
+        "value": "结果值",
+        "unit": "单位",
+        "time": "检验时间"
+      }
+    ],
+    "orders": ["医嘱摘要，正式对接时应使用结构化字段"],
+    "nursingRecords": ["护理评估、机械预防、活动和宣教记录摘要"],
+    "freeText": "脱敏后的病历摘要或经授权的文本片段"
+  },
+  "fieldMappingHints": {
+    "diagnoses": "优先映射病案首页诊断、当前住院诊断或 ICD 编码描述。",
+    "procedures": "优先映射手术麻醉系统、手术名称、术式或操作记录。",
+    "labs": "至少建议纳入 D-二聚体、血小板、Hb、PT/APTT、肌酐等与抗凝安全和 VTE 风险相关指标。",
+    "orders": "建议传递抗凝、机械预防、活动、影像检查和复评相关医嘱摘要。",
+    "nursingRecords": "建议传递卧床、活动、机械预防执行、健康教育和复评记录摘要。",
+    "freeText": "用于补充结构化字段缺失的病史、症状、病程和出院计划。"
+  },
+  "agentOutput": {
+    "riskLevel": "低危/中危/高危",
+    "riskFactors": ["识别到的风险因素"],
+    "bleedingFlags": ["出血风险或抗凝禁忌信号"],
+    "urgentFlags": ["急症线索，如疑似 PE、急性症状性 DVT、股青肿/肢体灌注风险"],
+    "riskPrediction": {
+      "targetEvent": "VTE发生/进展或已存在急性VTE需处理事件",
+      "unit": "%",
+      "peakWindow": "峰值风险时间窗",
+      "peakProbability": "峰值风险概率",
+      "trajectory": [
+        {
+          "label": "当前/24小时/72小时/7天/14天/30天/90天",
+          "hours": "距离当前时间的小时数",
+          "probability": "该时间窗演示性风险概率",
+          "band": "低/中/高/极高",
+          "phase": "该时间点的主要病例阶段或驱动因素"
+        }
+      ],
+      "modelSource": "规则演示模型或真实世界训练模型版本",
+      "topContributors": ["主要风险贡献因素"],
+      "clinicalAnchors": ["孕周/预计分娩/产后6周/术后节点/长期制动/高龄等时间锚点"]
+    },
+    "recommendations": ["需医生确认的建议草案"],
+    "roleTasks": {
+      "doctor": ["医生端任务"],
+      "nurse": ["护士端任务"],
+      "patient": ["患者端教育和提醒"],
+      "manager": ["管理端质控任务"]
+    },
+    "evidence": ["知识库来源"],
+    "reviewItems": ["人工复核项"],
+    "auditId": "审计日志 ID"
+  },
+  "recommendedWriteback": {
+    "doctorWorkbench": [
+      "riskLevel",
+      "riskFactors",
+      "bleedingFlags",
+      "urgentFlags",
+      "recommendations",
+      "reviewItems"
+    ],
+    "nursingTaskCenter": [
+      "roleTasks.nurse",
+      "decisionSupport.workflowReminders",
+      "decisionSupport.patientEducation"
+    ],
+    "managerDashboard": [
+      "riskLevel",
+      "urgentFlags",
+      "decisionSupport.qualityIndicators",
+      "auditId"
+    ],
+    "researchDataset": [
+      "riskFactors",
+      "bleedingFlags",
+      "reviewItems",
+      "auditId"
+    ]
+  },
+  "errorHandling": {
+    "400": "缺少 text 或 patientContext 等必要输入字段。",
+    "413": "正式部署时建议用于超大病历或批量文件的大小限制错误。",
+    "422": "字段存在但结构不完整，建议调用方先完成字段清洗和标准化。",
+    "500": "服务端异常，需记录调用源、审计编号和失败时间。"
+  },
+  "auditRequirements": [
+    "记录调用时间、调用来源系统、脱敏 patientToken、encounterToken、接口版本和结果摘要。",
+    "记录是否调用模型增强层、调用的模型适配器、知识库版本和规则版本。",
+    "关键建议回写到业务系统前，应保留人工确认状态和确认时间。"
+  ],
+  "integrationPhases": [
+    {
+      "phase": "P1",
+      "name": "离线脱敏验证",
+      "scope": "text_only 或 hybrid_context，不回写业务系统。"
+    },
+    {
+      "phase": "P2",
+      "name": "测试环境联调",
+      "scope": "patient_context 结构化接入，验证字段映射、接口耗时和输出可读性。"
+    },
+    {
+      "phase": "P3",
+      "name": "院内试点",
+      "scope": "按触发节点生成医生端、护士端和管理端输出，并保留人工确认。"
+    },
+    {
+      "phase": "P4",
+      "name": "正式部署评估",
+      "scope": "纳入鉴权、审计、权限控制、日志留痕和真实世界评价。"
+    }
+  ],
+  "securityBoundary": [
+    "真实患者数据原则上只在院内或授权内网环境处理。",
+    "外部演示不得输入可识别患者信息。",
+    "第三方系统对接需记录调用来源、输入摘要、输出结果、模型版本和知识库版本。"
+  ]
+}

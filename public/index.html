@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VTE 专病智能体 MVP</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="icon-vessel" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="8.5"></circle>
+        <path d="M4.5 12h4l2-4 3 8 2-4h4"></path>
+      </symbol>
+      <symbol id="icon-risk" viewBox="0 0 24 24">
+        <path d="M12 3 4.5 6v5.2c0 4.7 3.2 8 7.5 9.8 4.3-1.8 7.5-5.1 7.5-9.8V6L12 3Z"></path>
+        <path d="M12 8v5M12 16.5v.1"></path>
+      </symbol>
+      <symbol id="icon-peak" viewBox="0 0 24 24">
+        <path d="m3.5 18 5-6 3.5 3 5.2-8 3.3 4.2"></path>
+        <path d="M17 7h3.5v3.5"></path>
+      </symbol>
+      <symbol id="icon-time" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="8.5"></circle>
+        <path d="M12 7.5V12l3.2 2"></path>
+      </symbol>
+      <symbol id="icon-factor" viewBox="0 0 24 24">
+        <circle cx="7" cy="7" r="2.5"></circle>
+        <circle cx="17" cy="7" r="2.5"></circle>
+        <circle cx="12" cy="17" r="2.5"></circle>
+        <path d="m9.2 8.2 1.7 6.4M14.8 8.2l-1.7 6.4M9.5 7h5"></path>
+      </symbol>
+      <symbol id="icon-alert" viewBox="0 0 24 24">
+        <path d="M12 3.5 21 20H3L12 3.5Z"></path>
+        <path d="M12 9v5M12 17.2v.1"></path>
+      </symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24">
+        <path d="M12 3 4.5 6v5.3c0 4.5 3.1 7.8 7.5 9.7 4.4-1.9 7.5-5.2 7.5-9.7V6L12 3Z"></path>
+        <path d="m8.5 12 2.2 2.2 4.8-5"></path>
+      </symbol>
+      <symbol id="icon-review" viewBox="0 0 24 24">
+        <path d="M7 4.5h8l3 3V20H7V4.5Z"></path>
+        <path d="M15 4.5V8h3M9.5 12h5M9.5 15.5h5"></path>
+      </symbol>
+      <symbol id="icon-record" viewBox="0 0 24 24">
+        <path d="M6 3.5h9l3 3V20H6V3.5Z"></path>
+        <path d="M15 3.5V7h3M8.5 13h2l1.3-2.8 2.1 5 1.2-2.2h2.4"></path>
+      </symbol>
+      <symbol id="icon-checklist" viewBox="0 0 24 24">
+        <path d="M8.5 5H19M8.5 12H19M8.5 19H19"></path>
+        <path d="m3.5 5 1.3 1.3L7 3.8M3.5 12l1.3 1.3L7 10.8M3.5 19l1.3 1.3L7 17.8"></path>
+      </symbol>
+      <symbol id="icon-scale" viewBox="0 0 24 24">
+        <path d="M12 4v16M7 20h10M5 7h14M8 7l-4 7h8L8 7ZM16 7l-4 7h8l-4-7Z"></path>
+      </symbol>
+      <symbol id="icon-bell" viewBox="0 0 24 24">
+        <path d="M6 17h12l-1.5-2.5V10a4.5 4.5 0 0 0-9 0v4.5L6 17Z"></path>
+        <path d="M10 20h4"></path>
+      </symbol>
+      <symbol id="icon-book" viewBox="0 0 24 24">
+        <path d="M4 5.5c3.2-.7 5.8 0 8 2v12c-2.2-2-4.8-2.7-8-2V5.5ZM20 5.5c-3.2-.7-5.8 0-8 2v12c2.2-2 4.8-2.7 8-2V5.5Z"></path>
+      </symbol>
+      <symbol id="icon-cpu" viewBox="0 0 24 24">
+        <rect x="7" y="7" width="10" height="10" rx="2"></rect>
+        <path d="M9.5 2.8v2.4M14.5 2.8v2.4M9.5 18.8v2.4M14.5 18.8v2.4M18.8 9.5h2.4M18.8 14.5h2.4M2.8 9.5h2.4M2.8 14.5h2.4"></path>
+        <path d="M10.2 10.2h3.6v3.6h-3.6z"></path>
+      </symbol>
+      <symbol id="icon-spark" viewBox="0 0 24 24">
+        <path d="m12 3 1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7L12 3Z"></path>
+        <path d="m18.5 3.5.7 2.1 2.1.7-2.1.7-.7 2.1-.7-2.1-2.1-.7 2.1-.7.7-2.1Z"></path>
+      </symbol>
+      <symbol id="icon-timeline" viewBox="0 0 24 24">
+        <path d="M4.5 6.5h4M4.5 12h8M4.5 17.5h6"></path>
+        <circle cx="15.5" cy="6.5" r="1.8"></circle>
+        <circle cx="18" cy="12" r="1.8"></circle>
+        <circle cx="14" cy="17.5" r="1.8"></circle>
+      </symbol>
+      <symbol id="icon-route" viewBox="0 0 24 24">
+        <circle cx="6.5" cy="6.5" r="2.2"></circle>
+        <circle cx="17.5" cy="17.5" r="2.2"></circle>
+        <path d="M8.7 6.5h3.3a3 3 0 0 1 3 3v0a3 3 0 0 1-3 3H10a3 3 0 0 0-3 3v0a3 3 0 0 0 3 3h5.3"></path>
+      </symbol>
+    </svg>
+    <main class="layout">
+      <aside class="sidebar">
+        <section class="brand">
+          <div class="brand-mark">VTE</div>
+          <div>
+            <h1>VTE 专病智能体</h1>
+            <p>一期 MVP：可演示、可部署、可对接</p>
+          </div>
+        </section>
+
+        <section class="panel status-panel">
+          <h2>运行状态</h2>
+          <dl>
+            <div><dt>后端 API</dt><dd id="healthStatus">检查中</dd></div>
+            <div><dt>数据边界</dt><dd>无真实患者数据</dd></div>
+            <div><dt>知识库</dt><dd id="knowledgeStatus">加载中</dd></div>
+            <div><dt>模型层</dt><dd id="modelStatus">检查中</dd></div>
+            <div><dt>部署方式</dt><dd>本地/内网可运行</dd></div>
+            <div><dt>对接模式</dt><dd>REST API</dd></div>
+          </dl>
+        </section>
+
+        <section class="panel model-select-panel">
+          <div class="panel-title">
+            <h2>模型选择</h2>
+            <span id="selectedModelBadge" class="badge muted">规则/RAG</span>
+          </div>
+          <label class="field-label" for="modelPresetSelect">分析模式</label>
+          <select id="modelPresetSelect" aria-label="分析模式">
+            <option value="rules_rag">仅规则/RAG</option>
+          </select>
+          <label class="field-label" for="modelApiKey">API Key</label>
+          <input id="modelApiKey" type="password" autocomplete="off" placeholder="仅 GPT/API 模式需要" />
+          <p id="modelPresetHint" class="note">当前不调用大模型。</p>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h2>病例输入</h2>
+            <button id="clearCase" class="icon-button" type="button" title="清空">清空</button>
+          </div>
+          <label class="field-label">预设病例</label>
+          <div id="caseButtons" class="case-buttons"></div>
+          <textarea id="caseInput" spellcheck="false" aria-label="病例文本"></textarea>
+          <label class="field-label">当前病例识别</label>
+          <div id="caseSignals" class="case-signals"></div>
+          <button id="runAnalysis" class="primary-button" type="button">运行 VTE 智能体分析</button>
+        </section>
+      </aside>
+
+      <section class="main">
+        <header class="topbar">
+          <nav class="tabs" aria-label="视图切换">
+            <button class="tab active" data-tab="analysis" type="button">智能体分析</button>
+            <button class="tab" data-tab="emr" type="button">病历审查</button>
+            <button class="tab" data-tab="pathway" type="button">路径质控</button>
+            <button class="tab" data-tab="rag" type="button">RAG 知识库</button>
+            <button class="tab" data-tab="graph" type="button">知识图谱</button>
+            <button class="tab" data-tab="data" type="button">数据接入/驾驶舱</button>
+            <button class="tab" data-tab="informatization" type="button">信息化分级</button>
+            <button class="tab" data-tab="connector" type="button">对接接口</button>
+            <button class="tab" data-tab="model" type="button">模型层</button>
+            <button class="tab" data-tab="audit" type="button">审计日志</button>
+          </nav>
+          <button id="copyApi" class="secondary-button" type="button">复制结构化 API 示例</button>
+        </header>
+
+        <section id="tab-analysis" class="tab-view active">
+          <article class="panel report-panel">
+            <div class="report-intro">
+              <span class="section-emblem" aria-hidden="true"><svg><use href="#icon-vessel"></use></svg></span>
+              <div>
+                <h2>单病例分析报告</h2>
+                <p>导出当前病例的综合结论、风险轨迹、RAG 证据、角色任务和审计编号。</p>
+              </div>
+            </div>
+            <button id="exportMarkdownReport" class="secondary-button" type="button">导出 Markdown</button>
+          </article>
+
+          <article class="panel conclusion-panel">
+            <div class="panel-title">
+              <h2>智能体综合结论</h2>
+              <span id="analysisModeBadge" class="badge muted">待分析</span>
+            </div>
+            <div id="clinicalConclusionBox" class="empty">输入模拟病例后，将在这里显示综合结论、依据和下一步建议。</div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-title">
+              <h2>病例证据链与院方说明</h2>
+              <span class="badge muted">病历审查同步</span>
+            </div>
+            <div id="analysisDefenseBox" class="review-list"></div>
+          </article>
+
+          <div class="metrics">
+            <article class="metric"><div class="metric-label"><svg aria-hidden="true"><use href="#icon-risk"></use></svg><span>风险分层</span></div><strong id="riskLevel">-</strong></article>
+            <article class="metric"><div class="metric-label"><svg aria-hidden="true"><use href="#icon-peak"></use></svg><span>峰值风险</span></div><strong id="riskPeak">-</strong></article>
+            <article class="metric"><div class="metric-label"><svg aria-hidden="true"><use href="#icon-time"></use></svg><span>风险窗口</span></div><strong id="riskWindow">-</strong></article>
+            <article class="metric"><div class="metric-label"><svg aria-hidden="true"><use href="#icon-factor"></use></svg><span>风险因素</span></div><strong id="riskCount">-</strong></article>
+            <article class="metric"><div class="metric-label danger"><svg aria-hidden="true"><use href="#icon-alert"></use></svg><span>急症线索</span></div><strong id="urgentCount">-</strong></article>
+            <article class="metric"><div class="metric-label"><svg aria-hidden="true"><use href="#icon-shield"></use></svg><span>禁忌核查</span></div><strong id="bleedingCount">-</strong></article>
+            <article class="metric"><div class="metric-label"><svg aria-hidden="true"><use href="#icon-review"></use></svg><span>待复核</span></div><strong id="reviewCount">-</strong></article>
+          </div>
+
+          <div class="grid two">
+            <article class="panel">
+              <div class="panel-title">
+                <h2>风险解释智能体</h2>
+                <span id="riskBadge" class="badge muted">待分析</span>
+              </div>
+              <div id="riskBox" class="empty">请选择或输入病例后运行分析。</div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title">
+                <h2>防控建议审核智能体</h2>
+                <span class="badge muted">医生确认</span>
+              </div>
+              <div id="recommendationBox" class="empty">输出建议草案、边界和确认要求。</div>
+            </article>
+          </div>
+
+          <article class="panel">
+            <div class="panel-title">
+              <h2>多角色任务</h2>
+              <span class="badge muted">医生 / 护士 / 患者 / 管理 / 科研</span>
+            </div>
+            <div id="roleGrid" class="role-grid"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-title">
+              <h2>证据追溯</h2>
+              <span class="badge muted">RAG Evidence</span>
+            </div>
+            <div id="evidenceBox" class="evidence-list"></div>
+          </article>
+        </section>
+
+        <section id="tab-emr" class="tab-view">
+          <article class="module-banner emr-banner">
+            <span class="module-banner-icon" aria-hidden="true"><svg><use href="#icon-record"></use></svg></span>
+            <div><h2>病历审查智能体</h2><p>从风险评估、病历完整性、关键时间轴和医疗质量四个维度完成病例复核。</p></div>
+          </article>
+          <div class="grid two">
+            <article class="panel">
+              <div class="panel-title">
+                <div class="panel-heading-lockup"><span class="panel-heading-icon teal"><svg><use href="#icon-checklist"></use></svg></span><h2>VTE 流程核查</h2></div>
+                <span class="badge muted">病历完整性</span>
+              </div>
+              <div id="processCheckBox" class="review-list"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-title">
+                <div class="panel-heading-lockup"><span class="panel-heading-icon coral"><svg><use href="#icon-alert"></use></svg></span><h2>医疗质量与风险提示</h2></div>
+                <span class="badge muted">非法律结论</span>
+              </div>
+              <div id="riskHintBox" class="review-list"></div>
+            </article>
+          </div>
+
+          <div class="grid two">
+            <article class="panel">
+              <div class="panel-title">
+                <div class="panel-heading-lockup"><span class="panel-heading-icon blue"><svg><use href="#icon-time"></use></svg></span><h2>病例时间轴</h2></div>
+                <span class="badge muted">自动抽取</span>
+              </div>
+              <div id="timelineBox" class="review-list"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-title">
+                <div class="panel-heading-lockup"><span class="panel-heading-icon purple"><svg><use href="#icon-review"></use></svg></span><h2>病历完善建议</h2></div>
+                <span class="badge muted">可整改项</span>
+              </div>
+              <div id="gapBox" class="review-list"></div>
+            </article>
+          </div>
+
+          <div class="grid two">
+            <article class="panel">
+              <div class="panel-title">
+                <div class="panel-heading-lockup"><span class="panel-heading-icon green"><svg><use href="#icon-shield"></use></svg></span><h2>院方说明要点</h2></div>
+                <span class="badge muted">事实链视角</span>
+              </div>
+              <div id="hospitalDefenseBox" class="review-list"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-title">
+                <div class="panel-heading-lockup"><span class="panel-heading-icon coral"><svg><use href="#icon-alert"></use></svg></span><h2>未出院/当前补强清单</h2></div>
+                <span class="badge muted">可立即整改</span>
+              </div>
+              <div id="activeImprovementBox" class="review-list"></div>
+            </article>
+          </div>
+
+          <article class="panel">
+            <div class="panel-title">
+              <div class="panel-heading-lockup"><span class="panel-heading-icon gold"><svg><use href="#icon-book"></use></svg></span><h2>教学要点</h2></div>
+              <span class="badge muted">培训场景</span>
+            </div>
+            <div id="teachingBox" class="review-list"></div>
+          </article>
+        </section>
+
+        <section id="tab-pathway" class="tab-view">
+          <article class="module-banner pathway-banner">
+            <span class="module-banner-icon" aria-hidden="true"><svg><use href="#icon-checklist"></use></svg></span>
+            <div><h2>路径质控智能体</h2><p>把风险轨迹、量表、流程节点、质控指标和患者宣教组织成可复核的闭环路径。</p></div>
+          </article>
+          <article class="panel prediction-panel">
+            <div class="panel-title">
+              <div class="panel-heading-lockup"><span class="panel-heading-icon coral"><svg><use href="#icon-peak"></use></svg></span><h2>VTE 风险预测轨迹</h2></div>
+              <span id="predictionBadge" class="badge muted">演示模型</span>
+            </div>
+            <div id="predictionBox" class="prediction-layout"></div>
+          </article>
+
+          <div class="grid two">
+            <article class="panel">
+              <div class="panel-title">
+                <div class="panel-heading-lockup"><span class="panel-heading-icon purple"><svg><use href="#icon-scale"></use></svg></span><h2>多量表解释</h2></div>
+                <span class="badge muted">Caprini / Padua / Wells</span>
+              </div>
+              <div id="scaleBox" class="score-grid"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-title">
+                <div class="panel-heading-lockup"><span class="panel-heading-icon blue"><svg><use href="#icon-bell"></use></svg></span><h2>流程提醒节点</h2></div>
+                <span class="badge muted">入院 / 术后 / 出院</span>
+              </div>
+              <div id="reminderBox" class="review-list"></div>
+            </article>
+          </div>
+
+          <div class="grid two">
+            <article class="panel">
+              <div class="panel-title">
+                <div class="panel-heading-lockup"><span class="panel-heading-icon green"><svg><use href="#icon-shield"></use></svg></span><h2>质控指标</h2></div>
+                <span class="badge muted">评估 / 预防 / 复评 / 随访</span>
+              </div>
+              <div id="qualityIndicatorBox" class="review-list"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-title">
+                <div class="panel-heading-lockup"><span class="panel-heading-icon gold"><svg><use href="#icon-book"></use></svg></span><h2>患者宣教</h2></div>
+                <span class="badge muted">分层生成</span>
+              </div>
+              <div id="patientEducationBox" class="review-list"></div>
+            </article>
+          </div>
+
+          <article class="panel">
+            <div class="panel-title">
+              <h2>当前病历补强闭环</h2>
+              <span class="badge muted">与病历审查同步</span>
+            </div>
+            <div id="pathwayImprovementBox" class="review-list"></div>
+          </article>
+        </section>
+
+        <section id="tab-rag" class="tab-view">
+          <article class="panel">
+            <div class="panel-title">
+              <h2>RAG 知识库问答</h2>
+              <span class="badge muted">演示知识库</span>
+            </div>
+            <div class="question-row">
+              <input id="ragQuestion" type="text" value="高危患者存在出血风险时如何生成 VTE 防控建议？" />
+              <button id="askRag" class="primary-button small" type="button">检索生成</button>
+            </div>
+            <div id="ragCaseContextBox" class="review-list compact"></div>
+            <div id="ragAnswer" class="answer"></div>
+          </article>
+        </section>
+
+        <section id="tab-graph" class="tab-view">
+          <div class="grid graph-layout">
+            <article class="panel graph-panel">
+              <div class="panel-title">
+                <div class="graph-title-lockup">
+                  <span class="graph-title-icon" aria-hidden="true"><svg><use href="#icon-factor"></use></svg></span>
+                  <div><h2>静脉血栓栓塞临床路径知识图谱</h2><small>病例线索 · 临床路径 · 循证证据</small></div>
+                </div>
+                <span id="graphBadge" class="badge muted">待加载</span>
+              </div>
+              <div id="graphCanvas" class="graph-canvas"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-title">
+                <h2>病例触发路径</h2>
+                <span class="badge muted">规则 + 图谱</span>
+              </div>
+              <div id="graphSummary" class="review-list"></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="tab-data" class="tab-view">
+          <div class="grid two">
+            <article class="panel data-panel">
+              <div class="panel-title">
+                <h2>多模态病历导入</h2>
+                <span class="badge muted">PDF / Word / 图片 / 文本</span>
+              </div>
+              <div class="upload-zone">
+                <input id="documentFile" type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.txt,.md" />
+                <button id="previewDocument" class="primary-button small" type="button">生成导入预检</button>
+              </div>
+              <div class="format-grid">
+                <span>PDF 病历</span>
+                <span>Word 病历</span>
+                <span>扫描图片</span>
+                <span>结构化文本</span>
+              </div>
+              <div id="documentPreviewBox" class="review-list"></div>
+            </article>
+
+            <article class="panel data-panel">
+              <div class="panel-title">
+                <h2>院内系统队列接入</h2>
+                <span class="badge muted">HIS / EMR / LIS / PACS</span>
+              </div>
+              <div class="cohort-form">
+                <label class="field-label" for="cohortDepartment">科室</label>
+                <select id="cohortDepartment">
+                  <option value="all">全院</option>
+                  <option value="vascular">血管外科</option>
+                  <option value="orthopedics">骨科</option>
+                  <option value="obstetrics">产科</option>
+                  <option value="oncology">肿瘤相关科室</option>
+                </select>
+                <label class="field-label" for="cohortDiagnosis">诊断/场景</label>
+                <select id="cohortDiagnosis">
+                  <option value="all">全部 VTE 相关患者</option>
+                  <option value="dvt">DVT / 下肢静脉血栓</option>
+                  <option value="pe">PE / 肺栓塞</option>
+                  <option value="surgery">围术期卧床/手术患者</option>
+                  <option value="pregnancy">妊娠/产褥期</option>
+                </select>
+                <label class="field-label" for="cohortRange">时间范围</label>
+                <select id="cohortRange">
+                  <option value="7d">近 7 天</option>
+                  <option value="30d">近 30 天</option>
+                  <option value="90d">近 90 天</option>
+                  <option value="custom">自定义时间段</option>
+                </select>
+                <button id="runCohortQuery" class="primary-button" type="button">模拟调取并批量分析</button>
+              </div>
+              <div id="cohortResultBox" class="review-list"></div>
+            </article>
+          </div>
+
+          <article class="panel dashboard-panel">
+            <div class="panel-title">
+              <h2>管理者驾驶舱</h2>
+              <span id="dashboardBadge" class="badge muted">演示数据</span>
+            </div>
+            <div id="dashboardMetrics" class="dashboard-metrics"></div>
+            <div class="grid two dashboard-grid">
+              <div id="departmentChart" class="chart-box"></div>
+              <div id="qualityChart" class="chart-box"></div>
+            </div>
+            <div id="dashboardActions" class="review-list"></div>
+          </article>
+        </section>
+
+        <section id="tab-informatization" class="tab-view">
+          <article class="panel">
+            <div class="panel-title">
+              <h2>VTE 防控信息化建设分级</h2>
+              <span id="informatizationBadge" class="badge muted">待加载</span>
+            </div>
+            <div id="informatizationIntro" class="review-list"></div>
+          </article>
+          <div class="grid two">
+            <article class="panel">
+              <div class="panel-title">
+                <h2>HIS/电子病历分析</h2>
+                <span class="badge ok">可运行</span>
+              </div>
+              <textarea id="hisEmrInput" class="model-prompt informatics-input" spellcheck="false"></textarea>
+              <div class="button-row">
+                <button id="loadHisSample" class="secondary-button small" type="button">载入HIS样例</button>
+                <button id="runHisEmrAnalysis" class="primary-button small" type="button">分析并生成任务</button>
+              </div>
+              <div id="hisEmrAnalysisResult" class="review-list compact"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-title">
+                <h2>触发场景模拟器</h2>
+                <span class="badge medium">节点规则</span>
+              </div>
+              <div class="informatics-form">
+                <label class="field-label" for="triggerScenarioSelect">触发节点</label>
+                <select id="triggerScenarioSelect"></select>
+                <label class="field-label" for="triggerDepartmentSelect">科室/场景</label>
+                <select id="triggerDepartmentSelect"></select>
+                <button id="simulateTriggerScenario" class="primary-button small" type="button">生成节点任务</button>
+              </div>
+              <div id="triggerSimulationResult" class="review-list compact"></div>
+            </article>
+          </div>
+          <article class="panel">
+            <div class="panel-title">
+              <h2>医院能力自评</h2>
+              <span class="badge medium">自动判级</span>
+            </div>
+            <div id="capabilityChecklist" class="capability-checklist"></div>
+            <div class="button-row">
+              <button id="selectBaselineCapabilities" class="secondary-button small" type="button">选择底线能力</button>
+              <button id="runCapabilityAssessment" class="primary-button small" type="button">生成分级与缺口</button>
+            </div>
+            <div id="capabilityAssessmentResult" class="review-list compact"></div>
+          </article>
+          <div id="informatizationLevels" class="levels-grid"></div>
+          <article class="panel">
+            <div class="panel-title">
+              <h2>触发场景与量表配置</h2>
+              <span class="badge medium">调研清单</span>
+            </div>
+            <div class="grid two">
+              <div id="triggerScenarioList" class="requirement-grid"></div>
+              <div id="departmentScaleMap" class="requirement-grid"></div>
+            </div>
+          </article>
+          <div class="grid two">
+            <article class="panel">
+              <div class="panel-title">
+                <h2>数据字典与医嘱闭环</h2>
+                <span class="badge medium">接口准备</span>
+              </div>
+              <div id="dataDictionaryList" class="requirement-grid"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-title">
+                <h2>质控指标与部署依赖</h2>
+                <span class="badge medium">验收清单</span>
+              </div>
+              <div id="qualityMetricList" class="requirement-grid"></div>
+              <div id="systemPrerequisiteList" class="requirement-grid compact"></div>
+            </article>
+          </div>
+          <article class="panel">
+            <div class="panel-title">
+              <h2>智能体增强项</h2>
+              <span class="badge ok">MVP方向</span>
+            </div>
+            <div id="agentUpgradeList" class="requirement-grid four"></div>
+          </article>
+        </section>
+
+        <section id="tab-connector" class="tab-view">
+          <div class="grid two">
+            <article class="panel">
+              <div class="panel-title">
+                <h2>可对接 API</h2>
+                <span class="badge muted">REST</span>
+              </div>
+              <ul class="api-list">
+                <li><code>GET /api/health</code><span>健康检查</span></li>
+                <li><code>POST /api/analyze</code><span>单病例分析</span></li>
+                <li><code>POST /api/emr/review</code><span>电子病历深度审查</span></li>
+                <li><code>POST /api/document/ingest-preview</code><span>PDF/Word/图片/文本导入预检</span></li>
+                <li><code>POST /api/cohort/query</code><span>院内系统队列筛选与批量分析</span></li>
+                <li><code>GET /api/dashboard/summary</code><span>管理者驾驶舱统计摘要</span></li>
+                <li><code>POST /api/batch-analyze</code><span>批量病例分析</span></li>
+                <li><code>POST /api/rag/query</code><span>知识库检索问答</span></li>
+                <li><code>GET /api/connector-schema</code><span>第三方系统字段规范</span></li>
+              </ul>
+            </article>
+            <article class="panel">
+              <div class="panel-title">
+                <h2>接口规范摘要</h2>
+                <span class="badge muted">Schema</span>
+              </div>
+              <pre id="schemaBox" class="schema-box">加载中</pre>
+            </article>
+          </div>
+        </section>
+
+        <section id="tab-model" class="tab-view">
+          <div class="grid two">
+            <article class="panel">
+              <div class="panel-title">
+                <h2>模型适配层</h2>
+                <span id="modelBadge" class="badge muted">检查中</span>
+              </div>
+              <div id="modelInfo" class="review-list"></div>
+              <div id="modelDiscovery" class="adapter-list"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-title">
+                <h2>可调用接口</h2>
+                <span class="badge muted">按需启用</span>
+              </div>
+              <ul class="api-list">
+                <li><code>GET /api/model/status</code><span>查看当前模型配置和数据边界</span></li>
+                <li><code>POST /api/model/complete</code><span>调用 OpenAI 兼容接口或本地模型</span></li>
+              </ul>
+              <pre class="schema-box">MODEL_PROVIDER=off
+MODEL_PROVIDER=auto
+MODEL_PROVIDER=openai_compatible
+MODEL_PROVIDER=ollama
+MODEL_NAME=外部模型名或本地模型名
+MODEL_BASE_URL=https://api.openai.com/v1 或 http://localhost:11434</pre>
+            </article>
+          </div>
+          <article class="panel">
+            <div class="panel-title">
+              <h2>模型调用测试</h2>
+              <span class="badge muted">模拟/脱敏文本</span>
+            </div>
+            <textarea id="modelPrompt" class="model-prompt" spellcheck="false">请用三句话说明 VTE 智能体为什么应采用“可插拔模型适配层”。</textarea>
+            <button id="runModelTest" class="primary-button small" type="button">测试模型调用</button>
+            <pre id="modelTestOutput" class="schema-box model-output">未调用。</pre>
+          </article>
+        </section>
+
+        <section id="tab-audit" class="tab-view">
+          <article class="panel">
+            <div class="panel-title">
+              <h2>审计日志</h2>
+              <span id="auditId" class="badge muted">未生成</span>
+            </div>
+            <ol id="auditList" class="audit-list"></ol>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

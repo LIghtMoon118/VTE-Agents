@@ -1,0 +1,5714 @@
+{
+  "version": "0.2.0",
+  "updatedAt": "2026-06-15",
+  "scope": "VTE literature-matrix grounded clinical knowledge graph MVP",
+  "boundary": "基础图谱由 VTE 文献矩阵 knowledge.json 自动生成，并叠加少量临床路径种子节点；病例仅用于激活相关子图，不作为临时造图依据。",
+  "source": {
+    "corpus": "data/knowledge.json",
+    "literatureCount": 270,
+    "evidenceItemNodeLimit": 80,
+    "clinicalSeed": "data/knowledge-graph.json"
+  },
+  "nodes": [
+    {
+      "id": "vte_risk",
+      "label": "VTE 风险",
+      "type": "concept",
+      "group": "risk",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "perioperative_surgery",
+      "label": "围术期/手术状态",
+      "type": "risk_factor",
+      "group": "risk",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "cancer_related_risk",
+      "label": "肿瘤相关风险",
+      "type": "risk_factor",
+      "group": "risk",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "major_abdominopelvic_cancer_surgery",
+      "label": "腹盆腔肿瘤大手术",
+      "type": "risk_factor",
+      "group": "risk",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "advanced_age",
+      "label": "高龄",
+      "type": "risk_factor",
+      "group": "risk",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "immobility",
+      "label": "卧床/活动减少",
+      "type": "risk_factor",
+      "group": "risk",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "obesity",
+      "label": "肥胖/BMI 升高",
+      "type": "risk_factor",
+      "group": "risk",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "pregnancy_risk",
+      "label": "妊娠相关 VTE 风险",
+      "type": "risk_factor",
+      "group": "risk",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "ddimer_high",
+      "label": "D-二聚体升高",
+      "type": "lab",
+      "group": "diagnosis",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "caprini",
+      "label": "Caprini 评分",
+      "type": "tool",
+      "group": "assessment",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "high_risk",
+      "label": "VTE 高危",
+      "type": "risk_level",
+      "group": "assessment",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "symptomatic_dvt",
+      "label": "急性症状性下肢 DVT 线索",
+      "type": "clinical_signal",
+      "group": "emergency",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "suspected_pe",
+      "label": "疑似 PE 急症线索",
+      "type": "clinical_signal",
+      "group": "emergency",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "limb_ischemia_signal",
+      "label": "肢体灌注受威胁线索",
+      "type": "clinical_signal",
+      "group": "emergency",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "phlegmasia",
+      "label": "股青肿/静脉性坏疽风险",
+      "type": "emergency_condition",
+      "group": "emergency",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "urgent_triage",
+      "label": "急症优先处理",
+      "type": "decision",
+      "group": "emergency",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "vascular_exam",
+      "label": "床旁血管查体",
+      "type": "action",
+      "group": "diagnosis",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "duplex_ultrasound",
+      "label": "下肢血管超声",
+      "type": "test",
+      "group": "diagnosis",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "pe_imaging",
+      "label": "PE 影像路径",
+      "type": "test",
+      "group": "diagnosis",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "cta_ctv",
+      "label": "CTA/CTV",
+      "type": "test",
+      "group": "diagnosis",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "vascular_surgery_consult",
+      "label": "血管外科急会诊",
+      "type": "action",
+      "group": "emergency",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "obstetric_consult",
+      "label": "产科/麻醉多学科评估",
+      "type": "action",
+      "group": "emergency",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "bleeding_assessment",
+      "label": "出血风险评估",
+      "type": "assessment",
+      "group": "safety",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "therapeutic_anticoagulation",
+      "label": "治疗性抗凝评估",
+      "type": "treatment",
+      "group": "treatment",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "pregnancy_anticoagulation",
+      "label": "妊娠期抗凝安全方案",
+      "type": "treatment",
+      "group": "treatment",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "thrombus_removal",
+      "label": "血栓清除/介入评估",
+      "type": "treatment",
+      "group": "treatment",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "perioperative_plan",
+      "label": "围术期 VTE 防控方案",
+      "type": "plan",
+      "group": "prevention",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "mechanical_prophylaxis",
+      "label": "机械预防",
+      "type": "prevention",
+      "group": "prevention",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "pharmacologic_prophylaxis",
+      "label": "药物预防",
+      "type": "prevention",
+      "group": "prevention",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "nursing_reassessment",
+      "label": "护理动态复评",
+      "type": "workflow",
+      "group": "care",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "patient_education",
+      "label": "出院教育/随访",
+      "type": "workflow",
+      "group": "care",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "dvt_guideline_2026",
+      "label": "DVT 诊断和治疗指南第四版",
+      "type": "evidence",
+      "group": "evidence",
+      "source": "clinical_seed"
+    },
+    {
+      "id": "literature_matrix",
+      "label": "VTE 文献矩阵",
+      "type": "corpus",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_layer",
+      "label": "证据层",
+      "type": "layer",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "subtype_dvt",
+      "label": "DVT",
+      "type": "vte_subtype",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "subtype_pe",
+      "label": "PE",
+      "type": "vte_subtype",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "subtype_other",
+      "label": "其他静脉血栓",
+      "type": "vte_subtype",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "topic_ai_model",
+      "label": "AI/机器学习/预测模型",
+      "type": "topic",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "topic_imaging",
+      "label": "影像/CTPA/超声诊断",
+      "type": "topic",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "topic_cohort",
+      "label": "真实世界/队列/流行病学",
+      "type": "topic",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "topic_intervention",
+      "label": "介入/血栓清除/滤器",
+      "type": "topic",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "topic_anticoagulation",
+      "label": "抗凝/药物治疗",
+      "type": "topic",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "topic_guideline_review",
+      "label": "指南/综述/Meta",
+      "type": "topic",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "topic_bleeding_safety",
+      "label": "出血/安全性",
+      "type": "topic",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "topic_prevention_care",
+      "label": "预防/护理/康复",
+      "type": "topic",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "study_指南共识",
+      "label": "指南共识",
+      "type": "study_type",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "tier_core_guideline",
+      "label": "核心指南/共识",
+      "type": "evidence_tier",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "tier_guideline",
+      "label": "指南/共识",
+      "type": "evidence_tier",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "study_ai_预测模型",
+      "label": "AI/预测模型",
+      "type": "study_type",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "tier_general_literature",
+      "label": "普通文献",
+      "type": "evidence_tier",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "tier_cohort",
+      "label": "真实世界/队列",
+      "type": "evidence_tier",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "study_介入治疗",
+      "label": "介入治疗",
+      "type": "study_type",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "study_真实世界_队列",
+      "label": "真实世界/队列",
+      "type": "study_type",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "study_抗凝_治疗",
+      "label": "抗凝/治疗",
+      "type": "study_type",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "study_dvt",
+      "label": "DVT",
+      "type": "study_type",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "study_其他静脉血栓",
+      "label": "其他静脉血栓",
+      "type": "study_type",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "study_pe",
+      "label": "PE",
+      "type": "study_type",
+      "group": "evidence",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_core_guideline_dvt_2026_4th",
+      "label": "深静脉血栓形成诊断和治疗指南（第四版）",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "CORE-GUIDELINE-DVT-2026-4TH",
+      "sourceTitle": "深静脉血栓形成诊断和治疗指南（第四版）",
+      "priorityScore": 100,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_de28371f1e",
+      "label": "Deep Vein Thrombosis Prevention in Acute Ischemic Stroke...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-de28371f1e",
+      "sourceTitle": "Deep Vein Thrombosis Prevention in Acute Ischemic Stroke Patients with Lower Limb Paralysis: A Narrative Review.",
+      "priorityScore": 7,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_60c056eedd",
+      "label": "Outcomes of catheter intervention for acute pulmonary em...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-60c056eedd",
+      "sourceTitle": "Outcomes of catheter intervention for acute pulmonary emboli in a tertiary United Kingdom centre with an established Pulmonary Embolism Response Team (PERT).",
+      "priorityScore": 6,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_b9b480de9f",
+      "label": "Integrated Diagnosis of Submassive Pulmonary Embolism Us...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-b9b480de9f",
+      "sourceTitle": "Integrated Diagnosis of Submassive Pulmonary Embolism Using Computed Tomography Angiography, Echocardiography, and Artificial Intelligence.",
+      "priorityScore": 6,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_23b3dddd19",
+      "label": "Incidence and risk factors of deep vein thrombosis in cr...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-23b3dddd19",
+      "sourceTitle": "Incidence and risk factors of deep vein thrombosis in critically Ill patients: a systematic review and meta-analysis.",
+      "priorityScore": 6,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_0ee2859e08",
+      "label": "Development and preliminary validation of a PICC-related...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-0ee2859e08",
+      "sourceTitle": "Development and preliminary validation of a PICC-related venous thrombosis risk prediction model for cancer patients: A systematic review and meta-analysis predominantly based on Chinese populations.",
+      "priorityScore": 6,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_91d05bb62b",
+      "label": "Nudging provider adoption of clinical decision support: ...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-91d05bb62b",
+      "sourceTitle": "Nudging provider adoption of clinical decision support: study protocol for a stepped-wedge cluster randomized, hybrid type III trial of an electronic health record-agnostic pulmonary embolism risk tool.",
+      "priorityScore": 5,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_406df7eb1b",
+      "label": "Developing a nomogram to predict the risk of deep vein t...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-406df7eb1b",
+      "sourceTitle": "Developing a nomogram to predict the risk of deep vein thrombosis progression following lower limb fracture surgery.",
+      "priorityScore": 5,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_22226b3e35",
+      "label": "Real-world practices in the management of pediatric ilio...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-22226b3e35",
+      "sourceTitle": "Real-world practices in the management of pediatric iliofemoral deep vein thrombosis: Results of the ELITE-Kids survey.",
+      "priorityScore": 5,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_f770e79df5",
+      "label": "Transferring thrombus labels from CTPA to non-contrast C...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-f770e79df5",
+      "sourceTitle": "Transferring thrombus labels from CTPA to non-contrast CT via accurate pulmonary vessel registration: a critical step toward AI-based pulmonary embolism detection.",
+      "priorityScore": 5,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_4f8c23a183",
+      "label": "Fatal Outcome Following Polysubstance Use: A Case Report...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-4f8c23a183",
+      "sourceTitle": "Fatal Outcome Following Polysubstance Use: A Case Report of Rhabdomyolysis, Acute Kidney Injury, and Deep Vein Thrombosis.",
+      "priorityScore": 5,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_0abf483e4f",
+      "label": "Risk factors for TIVAD-related venous thrombosis in Chin...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-0abf483e4f",
+      "sourceTitle": "Risk factors for TIVAD-related venous thrombosis in Chinese breast cancer patients undergoing chemotherapy: A single-center retrospective study.",
+      "priorityScore": 5,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_6d4f860ed5",
+      "label": "Outcomes of Endovascular Treatment in Medically Refracto...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-6d4f860ed5",
+      "sourceTitle": "Outcomes of Endovascular Treatment in Medically Refractory Cerebral Venous Thrombosis: A Prospective Observational Study.",
+      "priorityScore": 5,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_8237d65772",
+      "label": "Direct Oral Anticoagulants versus Standard Therapy in Up...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-8237d65772",
+      "sourceTitle": "Direct Oral Anticoagulants versus Standard Therapy in Upper Extremity Deep Vein Thrombosis: Real-World Evidence.",
+      "priorityScore": 5,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_f844c69d02",
+      "label": "May-Thurner Syndrome: An Under-Recognized Etiology of De...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-f844c69d02",
+      "sourceTitle": "May-Thurner Syndrome: An Under-Recognized Etiology of Deep Vein Thrombosis (DVT).",
+      "priorityScore": 5,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_b004bf4323",
+      "label": "Cerebral venous thrombosis in non-bacterial infections: ...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-b004bf4323",
+      "sourceTitle": "Cerebral venous thrombosis in non-bacterial infections: a systematic review.",
+      "priorityScore": 5,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_6d61a0803f",
+      "label": "Management of Splanchnic Venous Thrombosis: An Update.",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-6d61a0803f",
+      "sourceTitle": "Management of Splanchnic Venous Thrombosis: An Update.",
+      "priorityScore": 5,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_1553406afb",
+      "label": "Ultrasound-Facilitated, Catheter-Directed Fibrinolysis f...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-1553406afb",
+      "sourceTitle": "Ultrasound-Facilitated, Catheter-Directed Fibrinolysis for Acute Pulmonary Embolism.",
+      "priorityScore": 4,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_45debac241",
+      "label": "Bronchial Dieulafoy's disease complicated by pulmonary e...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-45debac241",
+      "sourceTitle": "Bronchial Dieulafoy's disease complicated by pulmonary embolism after successful hemostasis: a case report and review of the literature.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_3742b92229",
+      "label": "Saddle pulmonary embolism detected by transthoracic echo...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-3742b92229",
+      "sourceTitle": "Saddle pulmonary embolism detected by transthoracic echocardiography-a case report.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_9898c47d91",
+      "label": "Who labels best? Radiologists, rules, or large language ...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-9898c47d91",
+      "sourceTitle": "Who labels best? Radiologists, rules, or large language models for CT reports on pulmonary embolism.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_d533cfc33a",
+      "label": "Mechanical Venous Thrombectomy May Provide A Cost-Effect...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-d533cfc33a",
+      "sourceTitle": "Mechanical Venous Thrombectomy May Provide A Cost-Effective Treatment Option For Patients with Iliofemoral Deep Vein Thrombosis.",
+      "priorityScore": 4,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_d3b43687a0",
+      "label": "Pulmonary embolism associated with CRBN-targeting immuno...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-d3b43687a0",
+      "sourceTitle": "Pulmonary embolism associated with CRBN-targeting immunomodulatory drugs: a FAERS-based pharmacovigilance and mechanistic analysis.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_06c1e2a119",
+      "label": "Preoperative neutrophil-to-lymphocyte ratio and postoper...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-06c1e2a119",
+      "sourceTitle": "Preoperative neutrophil-to-lymphocyte ratio and postoperative deep vein thrombosis after tibial plateau fracture: a retrospective analysis of a prospectively collected cohort.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_b2bc81374c",
+      "label": "Weekend admission and outcomes in cancer-associated pulm...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-b2bc81374c",
+      "sourceTitle": "Weekend admission and outcomes in cancer-associated pulmonary embolism: a cross-sectional national inpatient sample study, 2016-2022.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_782e9d3890",
+      "label": "Development and evaluation of a risk prediction model fo...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-782e9d3890",
+      "sourceTitle": "Development and evaluation of a risk prediction model for preoperative lower extremity deep vein thrombosis in orthopedic patients.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_c049f9ea48",
+      "label": "Comparison of aspirin and rivaroxaban for the prevention...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-c049f9ea48",
+      "sourceTitle": "Comparison of aspirin and rivaroxaban for the prevention of pulmonary embolism and deep vein thrombosis in high thrombotic risk patients with systemic lupus erythematosus: study protocol for a multicentre, prospective, randomised controlled trial.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_e47491ee6d",
+      "label": "Contemporary management of pediatric venous thrombosis: ...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-e47491ee6d",
+      "sourceTitle": "Contemporary management of pediatric venous thrombosis: how does it differ from adult care?",
+      "priorityScore": 4,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_2244821029",
+      "label": "Hidden Preoperative Lower-Extremity Venous Thrombosis in...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-2244821029",
+      "sourceTitle": "Hidden Preoperative Lower-Extremity Venous Thrombosis in Pelvic Organ Prolapse Surgery: Prevalence and Development of a Clinical Prediction Model.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_c0fa170c34",
+      "label": "Harnessing hybrid stacking ensemble learning for accurat...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-c0fa170c34",
+      "sourceTitle": "Harnessing hybrid stacking ensemble learning for accurate pulmonary embolism diagnosis using tabular clinical data.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_5bfd60e5fb",
+      "label": "Clinical Implementation of AI for Pulmonary Embolism Det...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-5bfd60e5fb",
+      "sourceTitle": "Clinical Implementation of AI for Pulmonary Embolism Detection in over 30,000 CT Pulmonary Angiography Examinations.",
+      "priorityScore": 4,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_d40d2fa970",
+      "label": "Long term quality of life after non-intervention for acu...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-d40d2fa970",
+      "sourceTitle": "Long term quality of life after non-intervention for acute iliofemoral deep venous thrombosis.",
+      "priorityScore": 4,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_f209aa8099",
+      "label": "Assessing the content and quality of deep vein thrombosi...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-f209aa8099",
+      "sourceTitle": "Assessing the content and quality of deep vein thrombosis on Bilibili, TikTok, and YouTube: a cross-sectional study.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_489b75b9be",
+      "label": "Deep vein thrombosis in a 14-year-old boy with a combina...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-489b75b9be",
+      "sourceTitle": "Deep vein thrombosis in a 14-year-old boy with a combination of May-Thurner syndrome, protein S deficiency and lupus anticoagulant: a case report.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_3ba1335791",
+      "label": "Circulating Biomarkers of Vascular Regeneration are not ...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-3ba1335791",
+      "sourceTitle": "Circulating Biomarkers of Vascular Regeneration are not Associated with Residual Pulmonary Vascular Obstruction after Pulmonary Embolism: A Retrospective Observational Biomarker Study.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_4f93ae473a",
+      "label": "Anticoagulation optimization and clinical impact of post...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-4f93ae473a",
+      "sourceTitle": "Anticoagulation optimization and clinical impact of post-transplant deep vein thrombosis: clinical impact and a VV-ECMO subgroup analysis.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_2bc5f797a3",
+      "label": "Risk Stratification in Pulmonary Embolism: The Expanding...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-2bc5f797a3",
+      "sourceTitle": "Risk Stratification in Pulmonary Embolism: The Expanding Role of Biomarkers.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_eb4135446a",
+      "label": "Commercial artificial intelligence-assisted performance ...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-eb4135446a",
+      "sourceTitle": "Commercial artificial intelligence-assisted performance and interpretation time of first-on-call radiology residents using computed tomography pulmonary angiography to detect pulmonary embolism: a multireader, multicenter study.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_f0fc549a74",
+      "label": "Chronic Thromboembolism Phenotypes after Acute Pulmonary...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-f0fc549a74",
+      "sourceTitle": "Chronic Thromboembolism Phenotypes after Acute Pulmonary Embolism: Identification with the SEARCH Algorithm.",
+      "priorityScore": 4,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_1be1fbe04b",
+      "label": "Predictors, Incidence, and Proximal Extension Rate of Di...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-1be1fbe04b",
+      "sourceTitle": "Predictors, Incidence, and Proximal Extension Rate of Distal Deep Vein Thrombosis in Internal Medicine Wards: Insights from the AURELIO Study.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_1540d48bfd",
+      "label": "Performance of Bleeding Risk Scores for Major Bleeding i...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-1540d48bfd",
+      "sourceTitle": "Performance of Bleeding Risk Scores for Major Bleeding in Anticoagulated Patients with Pulmonary Embolism: Insights from the CURES Registry-2.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_df4d7b8efc",
+      "label": "Risk Factors and Outcomes of Subsegmental versus More Ce...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-df4d7b8efc",
+      "sourceTitle": "Risk Factors and Outcomes of Subsegmental versus More Central Pulmonary Embolism in Patients with Lung Cancer.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_e0960dab9b",
+      "label": "[Acute venous disorders: deep vein thrombosis and superf...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-e0960dab9b",
+      "sourceTitle": "[Acute venous disorders: deep vein thrombosis and superficial vein thrombosis of the lower extremity : Diagnosis and treatment in dermatology practice].",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_c2f014d1af",
+      "label": "Refractory deep cerebral venous thrombosis managed by me...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-c2f014d1af",
+      "sourceTitle": "Refractory deep cerebral venous thrombosis managed by mechanical thrombectomy and balloon angioplasty: A case report.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_7d1e799aa1",
+      "label": "Cerebral venous thrombosis after brain surgery.",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-7d1e799aa1",
+      "sourceTitle": "Cerebral venous thrombosis after brain surgery.",
+      "priorityScore": 4,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_943f2b4282",
+      "label": "Reperfusion strategies for acute pulmonary embolism: Des...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-943f2b4282",
+      "sourceTitle": "Reperfusion strategies for acute pulmonary embolism: Design and rationale of RECONNECT-PE-A living systematic review and meta-analysis.",
+      "priorityScore": 4,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_1e2dec9dbb",
+      "label": "Hematemesis resulting from mesenteric venous thrombosis:...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-1e2dec9dbb",
+      "sourceTitle": "Hematemesis resulting from mesenteric venous thrombosis: A case report.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_7b2f8ee27a",
+      "label": "Hyperhomocysteinemia as a risk factor for cerebral venou...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-7b2f8ee27a",
+      "sourceTitle": "Hyperhomocysteinemia as a risk factor for cerebral venous thrombosis: a systematic review and meta-analysis of the case-control studies.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_dac27e9a90",
+      "label": "Quality of Life Following Endovascular Treatment of Prox...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-dac27e9a90",
+      "sourceTitle": "Quality of Life Following Endovascular Treatment of Proximal Lower Limb Deep Vein Thrombosis: A Systematic Review and Meta-Analysis.",
+      "priorityScore": 4,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_cd48c7afb3",
+      "label": "Splanchnic venous thrombosis in necrotizing pancreatitis...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-cd48c7afb3",
+      "sourceTitle": "Splanchnic venous thrombosis in necrotizing pancreatitis: recanalization and the effectiveness of anticoagulant therapy.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_d386d952e4",
+      "label": "Specific Features of Cerebral Venous Thrombosis Associat...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-d386d952e4",
+      "sourceTitle": "Specific Features of Cerebral Venous Thrombosis Associated With Iron Deficiency Anemia.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_1b276b4ad7",
+      "label": "Combination of Intermittent Pneumatic Compression and Gr...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-1b276b4ad7",
+      "sourceTitle": "Combination of Intermittent Pneumatic Compression and Graduated Compression Stockings for the Prevention of Deep Venous Thrombosis in Separation Surgery for Thoracolumbar Metastases: Mandatory or Optional?",
+      "priorityScore": 4,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_4fac126bdd",
+      "label": "Development and validation of a deep vein thrombosis ris...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-4fac126bdd",
+      "sourceTitle": "Development and validation of a deep vein thrombosis risk assessment tool for surgical patients aged 75 years and older.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_3202f3456f",
+      "label": "Adrenal hemorrhage requiring apixaban reversal in the se...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-3202f3456f",
+      "sourceTitle": "Adrenal hemorrhage requiring apixaban reversal in the setting of active deep vein thrombosis and heparin-induced thrombocytopenia: A case report.",
+      "priorityScore": 4,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_5eabc2b92f",
+      "label": "Cost Effectiveness of Mechanical Thrombectomy Versus Ant...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-5eabc2b92f",
+      "sourceTitle": "Cost Effectiveness of Mechanical Thrombectomy Versus Anticoagulation for Treating Iliofemoral Deep Vein Thrombosis in the UK.",
+      "priorityScore": 4,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_696c4bebae",
+      "label": "Symptomatic Deep Venous Thrombosis of the Upper Extremit...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-696c4bebae",
+      "sourceTitle": "Symptomatic Deep Venous Thrombosis of the Upper Extremity Following Transvenous Lead Extraction, Data From EXTRACT Registry.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_fab700768e",
+      "label": "Complications of Cerebral Venous Thrombosis After Cerebe...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-fab700768e",
+      "sourceTitle": "Complications of Cerebral Venous Thrombosis After Cerebellopontine Angle Tumor Resection: A STROBE Retrospective Observational Cohort Study.",
+      "priorityScore": 4,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_d56ee605ba",
+      "label": "Who benefits from a filter? Developing clinical predicti...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-d56ee605ba",
+      "sourceTitle": "Who benefits from a filter? Developing clinical prediction models for thrombus dislodgement in hospitalized patients with deep vein thrombosis: A multicenter retrospective study.",
+      "priorityScore": 4,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_86fff4ef92",
+      "label": "Perioperative prevention of venous thrombosis with low-m...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-86fff4ef92",
+      "sourceTitle": "Perioperative prevention of venous thrombosis with low-molecular-weight heparin versus rivaroxaban in elderly patients with hip fractures: A retrospective controlled study.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_260991a801",
+      "label": "Superficial Venous Thrombosis in Non-Varicose Veins: A N...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-260991a801",
+      "sourceTitle": "Superficial Venous Thrombosis in Non-Varicose Veins: A Narrative Review.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_2f54dffd00",
+      "label": "Adenomyosis with abnormal uterine bleeding complicated b...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-2f54dffd00",
+      "sourceTitle": "Adenomyosis with abnormal uterine bleeding complicated by venous thrombosis: a case series and literature review.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_4f50031de6",
+      "label": "Enhancing risk prediction for cerebral venous thrombosis...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-4f50031de6",
+      "sourceTitle": "Enhancing risk prediction for cerebral venous thrombosis: evaluation of an integrated approach with clinical CVT probability score and D-dimer levels.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_d5cfc76934",
+      "label": "Management of venous thrombosis in sickle cell disease: ...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-d5cfc76934",
+      "sourceTitle": "Management of venous thrombosis in sickle cell disease: a comparative study on the use of direct oral anticoagulants and warfarin.",
+      "priorityScore": 4,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_455cfd4664",
+      "label": "The diagnostic and short-term prognostic significance of...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-455cfd4664",
+      "sourceTitle": "The diagnostic and short-term prognostic significance of miR-183-5p in pulmonary embolism and its regulation of disease progression through PDCD4.",
+      "priorityScore": 3,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_20735b6ac6",
+      "label": "Mechanical Thrombectomy for Intermediate- and High-Risk ...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-20735b6ac6",
+      "sourceTitle": "Mechanical Thrombectomy for Intermediate- and High-Risk Pulmonary Embolism: A Retrospective Observational Cohort Study.",
+      "priorityScore": 3,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_381920b0ed",
+      "label": "Large-Bore Mechanical Thrombectomy With Bivalirudin for ...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-381920b0ed",
+      "sourceTitle": "Large-Bore Mechanical Thrombectomy With Bivalirudin for Post-CABG HIT-Associated Intermediate- to High-Risk Pulmonary Embolism.",
+      "priorityScore": 3,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_7139b604ca",
+      "label": "Frequency and Risk Factors for Symptomatic Pulmonary Emb...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-7139b604ca",
+      "sourceTitle": "Frequency and Risk Factors for Symptomatic Pulmonary Embolism Following Spinal Fusion Surgery Exceeding Six Hours: Dynamic Risk Stratification Using a Two-Stage Predictive Model.",
+      "priorityScore": 3,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_a4a7c085d0",
+      "label": "Unraveling the Economics of Pulmonary Embolism Care in a...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-a4a7c085d0",
+      "sourceTitle": "Unraveling the Economics of Pulmonary Embolism Care in a 23-Year Resource Utilization Study.",
+      "priorityScore": 3,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_c10f391f09",
+      "label": "[Epidemiological profile of pulmonary embolism at Bogodo...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-c10f391f09",
+      "sourceTitle": "[Epidemiological profile of pulmonary embolism at Bogodogo University Hospital Centre, Burkina Faso: A descriptive cross-sectional study].",
+      "priorityScore": 3,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_c093293396",
+      "label": "Comparative pulmonary artery pressure response between l...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-c093293396",
+      "sourceTitle": "Comparative pulmonary artery pressure response between large-bore thrombectomy and catheter-directed thrombolysis in patients with intermediate-high- and high-risk pulmonary embolism.",
+      "priorityScore": 3,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_f05f193fe1",
+      "label": "Development and validation of a predictive model for pos...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-f05f193fe1",
+      "sourceTitle": "Development and validation of a predictive model for postoperative deep vein thrombosis in elderly patients undergoing hip fracture surgery: A retrospective study.",
+      "priorityScore": 3,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_31e0aa3aaf",
+      "label": "Point-of-care ultrasound in hemodynamically unstable pul...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-31e0aa3aaf",
+      "sourceTitle": "Point-of-care ultrasound in hemodynamically unstable pulmonary embolism.",
+      "priorityScore": 3,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_d829d7e9f2",
+      "label": "Point-of-care ultrasound by trained emergency physicians...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-d829d7e9f2",
+      "sourceTitle": "Point-of-care ultrasound by trained emergency physicians versus radiologists for deep vein thrombosis diagnosis: a prospective blinded study on diagnostic accuracy and time efficiency.",
+      "priorityScore": 3,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_118190d81a",
+      "label": "RETRACTION: 8 F Catheter Percutaneous Mechanical Thrombe...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-118190d81a",
+      "sourceTitle": "RETRACTION: 8 F Catheter Percutaneous Mechanical Thrombectomy Plus Anticoagulation Versus Anticoagulation Alone in Intermediate-High Risk Acute Pulmonary Embolism: A Multicenter Real-World Study on Long-Term Complications, Right Heart Function, and Quality of Life.",
+      "priorityScore": 3,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_a3e6743529",
+      "label": "Accuracy of electrical impedance tomography to detect pe...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-a3e6743529",
+      "sourceTitle": "Accuracy of electrical impedance tomography to detect perfusion defects in pulmonary embolism.",
+      "priorityScore": 3,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_2abcdcb140",
+      "label": "Outcomes of Venous-Arterial Extracorporeal Membrane Oxyg...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-2abcdcb140",
+      "sourceTitle": "Outcomes of Venous-Arterial Extracorporeal Membrane Oxygenation Therapy in Acute Pulmonary Embolism: A Single-Center Experience.",
+      "priorityScore": 3,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_8e8ee3437a",
+      "label": "MiR-582-3p regulates endothelial cell function in lower ...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-8e8ee3437a",
+      "sourceTitle": "MiR-582-3p regulates endothelial cell function in lower extremity deep vein thrombosis by targeting TFRC.",
+      "priorityScore": 3,
+      "fulltextStatus": "已归档PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_3787ac8214",
+      "label": "S1Q3T3 Pattern in Lemierre Syndrome: Acute Cor Pulmonale...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-3787ac8214",
+      "sourceTitle": "S1Q3T3 Pattern in Lemierre Syndrome: Acute Cor Pulmonale Masquerading as Massive Pulmonary Embolism.",
+      "priorityScore": 3,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_359d9c8574",
+      "label": "Thrombolysis for pulmonary embolism: A network meta-anal...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-359d9c8574",
+      "sourceTitle": "Thrombolysis for pulmonary embolism: A network meta-analysis.",
+      "priorityScore": 3,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    },
+    {
+      "id": "evidence_pubmed_aebd45b6a1",
+      "label": "Diagnostic management of suspected acute pulmonary embol...",
+      "type": "evidence_item",
+      "group": "evidence",
+      "year": "2026",
+      "sourceId": "PUBMED-aebd45b6a1",
+      "sourceTitle": "Diagnostic management of suspected acute pulmonary embolism in the postpartum period.",
+      "priorityScore": 3,
+      "fulltextStatus": "开放及期刊页未找到PDF",
+      "source": "knowledge_json"
+    }
+  ],
+  "edges": [
+    {
+      "source": "perioperative_surgery",
+      "target": "vte_risk",
+      "relation": "增加风险",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "cancer_related_risk",
+      "target": "vte_risk",
+      "relation": "增加风险",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "major_abdominopelvic_cancer_surgery",
+      "target": "perioperative_surgery",
+      "relation": "属于",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "major_abdominopelvic_cancer_surgery",
+      "target": "cancer_related_risk",
+      "relation": "合并",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "major_abdominopelvic_cancer_surgery",
+      "target": "vte_risk",
+      "relation": "复合增加风险",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "advanced_age",
+      "target": "vte_risk",
+      "relation": "增加风险",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "immobility",
+      "target": "vte_risk",
+      "relation": "增加风险",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "obesity",
+      "target": "vte_risk",
+      "relation": "增加风险",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "pregnancy_risk",
+      "target": "vte_risk",
+      "relation": "增加风险",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "ddimer_high",
+      "target": "symptomatic_dvt",
+      "relation": "支持排查",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "vte_risk",
+      "target": "caprini",
+      "relation": "手术患者评估",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "caprini",
+      "target": "high_risk",
+      "relation": "分层输出",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "symptomatic_dvt",
+      "target": "urgent_triage",
+      "relation": "触发复核",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "suspected_pe",
+      "target": "urgent_triage",
+      "relation": "急症优先",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "symptomatic_dvt",
+      "target": "suspected_pe",
+      "relation": "合并需排查",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "limb_ischemia_signal",
+      "target": "phlegmasia",
+      "relation": "警惕",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "phlegmasia",
+      "target": "urgent_triage",
+      "relation": "急症优先",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "urgent_triage",
+      "target": "vascular_exam",
+      "relation": "立即执行",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "urgent_triage",
+      "target": "duplex_ultrasound",
+      "relation": "优先检查",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "urgent_triage",
+      "target": "pe_imaging",
+      "relation": "必要时检查",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "urgent_triage",
+      "target": "cta_ctv",
+      "relation": "必要时检查",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "urgent_triage",
+      "target": "vascular_surgery_consult",
+      "relation": "启动",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "urgent_triage",
+      "target": "obstetric_consult",
+      "relation": "妊娠时启动",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "urgent_triage",
+      "target": "therapeutic_anticoagulation",
+      "relation": "医生评估",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "pregnancy_risk",
+      "target": "pregnancy_anticoagulation",
+      "relation": "限定用药安全",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "therapeutic_anticoagulation",
+      "target": "pregnancy_anticoagulation",
+      "relation": "妊娠时转化",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "urgent_triage",
+      "target": "thrombus_removal",
+      "relation": "医生评估",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "bleeding_assessment",
+      "target": "therapeutic_anticoagulation",
+      "relation": "安全前提",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "bleeding_assessment",
+      "target": "pharmacologic_prophylaxis",
+      "relation": "安全前提",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "urgent_triage",
+      "target": "perioperative_plan",
+      "relation": "急症明确后再制定",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "high_risk",
+      "target": "perioperative_plan",
+      "relation": "需要",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "perioperative_plan",
+      "target": "mechanical_prophylaxis",
+      "relation": "包含",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "perioperative_plan",
+      "target": "pharmacologic_prophylaxis",
+      "relation": "包含",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "perioperative_plan",
+      "target": "nursing_reassessment",
+      "relation": "形成闭环",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "perioperative_plan",
+      "target": "patient_education",
+      "relation": "延续管理",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "dvt_guideline_2026",
+      "target": "caprini",
+      "relation": "依据",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "dvt_guideline_2026",
+      "target": "duplex_ultrasound",
+      "relation": "依据",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "dvt_guideline_2026",
+      "target": "bleeding_assessment",
+      "relation": "依据",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "dvt_guideline_2026",
+      "target": "therapeutic_anticoagulation",
+      "relation": "依据",
+      "sourceType": "clinical_seed"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_layer",
+      "relation": "构建"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "subtype_dvt",
+      "relation": "覆盖亚型"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "subtype_pe",
+      "relation": "覆盖亚型"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "subtype_other",
+      "relation": "覆盖亚型"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "topic_ai_model",
+      "relation": "主题聚类"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "topic_imaging",
+      "relation": "主题聚类"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "topic_cohort",
+      "relation": "主题聚类"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "topic_intervention",
+      "relation": "主题聚类"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "topic_anticoagulation",
+      "relation": "主题聚类"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "topic_guideline_review",
+      "relation": "主题聚类"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "topic_bleeding_safety",
+      "relation": "主题聚类"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "topic_prevention_care",
+      "relation": "主题聚类"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "subtype_dvt",
+      "target": "study_指南共识",
+      "relation": "包含文献类型"
+    },
+    {
+      "source": "study_指南共识",
+      "target": "tier_core_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "subtype_dvt",
+      "target": "topic_imaging",
+      "relation": "相关主题"
+    },
+    {
+      "source": "topic_imaging",
+      "target": "tier_core_guideline",
+      "relation": "证据支持"
+    },
+    {
+      "source": "subtype_dvt",
+      "target": "topic_cohort",
+      "relation": "相关主题"
+    },
+    {
+      "source": "topic_cohort",
+      "target": "tier_core_guideline",
+      "relation": "证据支持"
+    },
+    {
+      "source": "subtype_dvt",
+      "target": "topic_intervention",
+      "relation": "相关主题"
+    },
+    {
+      "source": "topic_intervention",
+      "target": "tier_core_guideline",
+      "relation": "证据支持"
+    },
+    {
+      "source": "subtype_dvt",
+      "target": "topic_anticoagulation",
+      "relation": "相关主题"
+    },
+    {
+      "source": "topic_anticoagulation",
+      "target": "tier_core_guideline",
+      "relation": "证据支持"
+    },
+    {
+      "source": "subtype_dvt",
+      "target": "topic_guideline_review",
+      "relation": "相关主题"
+    },
+    {
+      "source": "topic_guideline_review",
+      "target": "tier_core_guideline",
+      "relation": "证据支持"
+    },
+    {
+      "source": "subtype_dvt",
+      "target": "topic_bleeding_safety",
+      "relation": "相关主题"
+    },
+    {
+      "source": "topic_bleeding_safety",
+      "target": "tier_core_guideline",
+      "relation": "证据支持"
+    },
+    {
+      "source": "subtype_dvt",
+      "target": "topic_prevention_care",
+      "relation": "相关主题"
+    },
+    {
+      "source": "topic_prevention_care",
+      "target": "tier_core_guideline",
+      "relation": "证据支持"
+    },
+    {
+      "source": "study_指南共识",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "subtype_dvt",
+      "target": "topic_ai_model",
+      "relation": "相关主题"
+    },
+    {
+      "source": "topic_ai_model",
+      "target": "tier_guideline",
+      "relation": "证据支持"
+    },
+    {
+      "source": "topic_imaging",
+      "target": "tier_guideline",
+      "relation": "证据支持"
+    },
+    {
+      "source": "topic_cohort",
+      "target": "tier_guideline",
+      "relation": "证据支持"
+    },
+    {
+      "source": "topic_intervention",
+      "target": "tier_guideline",
+      "relation": "证据支持"
+    },
+    {
+      "source": "topic_anticoagulation",
+      "target": "tier_guideline",
+      "relation": "证据支持"
+    },
+    {
+      "source": "topic_guideline_review",
+      "target": "tier_guideline",
+      "relation": "证据支持"
+    },
+    {
+      "source": "topic_bleeding_safety",
+      "target": "tier_guideline",
+      "relation": "证据支持"
+    },
+    {
+      "source": "topic_prevention_care",
+      "target": "tier_guideline",
+      "relation": "证据支持"
+    },
+    {
+      "source": "subtype_pe",
+      "target": "study_指南共识",
+      "relation": "包含文献类型"
+    },
+    {
+      "source": "subtype_pe",
+      "target": "topic_ai_model",
+      "relation": "相关主题"
+    },
+    {
+      "source": "subtype_pe",
+      "target": "topic_imaging",
+      "relation": "相关主题"
+    },
+    {
+      "source": "subtype_pe",
+      "target": "topic_cohort",
+      "relation": "相关主题"
+    },
+    {
+      "source": "subtype_pe",
+      "target": "topic_intervention",
+      "relation": "相关主题"
+    },
+    {
+      "source": "subtype_pe",
+      "target": "topic_anticoagulation",
+      "relation": "相关主题"
+    },
+    {
+      "source": "subtype_pe",
+      "target": "topic_guideline_review",
+      "relation": "相关主题"
+    },
+    {
+      "source": "subtype_pe",
+      "target": "topic_bleeding_safety",
+      "relation": "相关主题"
+    },
+    {
+      "source": "subtype_other",
+      "target": "study_指南共识",
+      "relation": "包含文献类型"
+    },
+    {
+      "source": "subtype_other",
+      "target": "topic_ai_model",
+      "relation": "相关主题"
+    },
+    {
+      "source": "subtype_other",
+      "target": "topic_imaging",
+      "relation": "相关主题"
+    },
+    {
+      "source": "subtype_other",
+      "target": "topic_cohort",
+      "relation": "相关主题"
+    },
+    {
+      "source": "subtype_other",
+      "target": "topic_intervention",
+      "relation": "相关主题"
+    },
+    {
+      "source": "subtype_other",
+      "target": "topic_guideline_review",
+      "relation": "相关主题"
+    },
+    {
+      "source": "subtype_other",
+      "target": "topic_prevention_care",
+      "relation": "相关主题"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "subtype_dvt",
+      "target": "study_ai_预测模型",
+      "relation": "包含文献类型"
+    },
+    {
+      "source": "study_ai_预测模型",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "topic_ai_model",
+      "target": "tier_general_literature",
+      "relation": "证据支持"
+    },
+    {
+      "source": "topic_imaging",
+      "target": "tier_general_literature",
+      "relation": "证据支持"
+    },
+    {
+      "source": "topic_cohort",
+      "target": "tier_general_literature",
+      "relation": "证据支持"
+    },
+    {
+      "source": "topic_intervention",
+      "target": "tier_general_literature",
+      "relation": "证据支持"
+    },
+    {
+      "source": "topic_prevention_care",
+      "target": "tier_general_literature",
+      "relation": "证据支持"
+    },
+    {
+      "source": "subtype_other",
+      "target": "study_ai_预测模型",
+      "relation": "包含文献类型"
+    },
+    {
+      "source": "subtype_other",
+      "target": "topic_anticoagulation",
+      "relation": "相关主题"
+    },
+    {
+      "source": "topic_anticoagulation",
+      "target": "tier_general_literature",
+      "relation": "证据支持"
+    },
+    {
+      "source": "subtype_other",
+      "target": "topic_bleeding_safety",
+      "relation": "相关主题"
+    },
+    {
+      "source": "topic_bleeding_safety",
+      "target": "tier_general_literature",
+      "relation": "证据支持"
+    },
+    {
+      "source": "study_ai_预测模型",
+      "target": "tier_cohort",
+      "relation": "证据等级"
+    },
+    {
+      "source": "topic_ai_model",
+      "target": "tier_cohort",
+      "relation": "证据支持"
+    },
+    {
+      "source": "topic_imaging",
+      "target": "tier_cohort",
+      "relation": "证据支持"
+    },
+    {
+      "source": "topic_cohort",
+      "target": "tier_cohort",
+      "relation": "证据支持"
+    },
+    {
+      "source": "topic_intervention",
+      "target": "tier_cohort",
+      "relation": "证据支持"
+    },
+    {
+      "source": "topic_anticoagulation",
+      "target": "tier_cohort",
+      "relation": "证据支持"
+    },
+    {
+      "source": "topic_bleeding_safety",
+      "target": "tier_cohort",
+      "relation": "证据支持"
+    },
+    {
+      "source": "subtype_pe",
+      "target": "study_ai_预测模型",
+      "relation": "包含文献类型"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "study_介入治疗",
+      "relation": "研究类型"
+    },
+    {
+      "source": "subtype_pe",
+      "target": "study_介入治疗",
+      "relation": "包含文献类型"
+    },
+    {
+      "source": "study_介入治疗",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "subtype_pe",
+      "target": "topic_prevention_care",
+      "relation": "相关主题"
+    },
+    {
+      "source": "topic_guideline_review",
+      "target": "tier_general_literature",
+      "relation": "证据支持"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "study_真实世界_队列",
+      "relation": "研究类型"
+    },
+    {
+      "source": "subtype_pe",
+      "target": "study_真实世界_队列",
+      "relation": "包含文献类型"
+    },
+    {
+      "source": "study_真实世界_队列",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "study_抗凝_治疗",
+      "relation": "研究类型"
+    },
+    {
+      "source": "subtype_dvt",
+      "target": "study_抗凝_治疗",
+      "relation": "包含文献类型"
+    },
+    {
+      "source": "study_抗凝_治疗",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "topic_prevention_care",
+      "target": "tier_cohort",
+      "relation": "证据支持"
+    },
+    {
+      "source": "subtype_other",
+      "target": "study_真实世界_队列",
+      "relation": "包含文献类型"
+    },
+    {
+      "source": "study_真实世界_队列",
+      "target": "tier_cohort",
+      "relation": "证据等级"
+    },
+    {
+      "source": "subtype_other",
+      "target": "study_介入治疗",
+      "relation": "包含文献类型"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "study_dvt",
+      "relation": "研究类型"
+    },
+    {
+      "source": "subtype_dvt",
+      "target": "study_dvt",
+      "relation": "包含文献类型"
+    },
+    {
+      "source": "study_dvt",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "study_其他静脉血栓",
+      "relation": "研究类型"
+    },
+    {
+      "source": "subtype_other",
+      "target": "study_其他静脉血栓",
+      "relation": "包含文献类型"
+    },
+    {
+      "source": "study_其他静脉血栓",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "subtype_dvt",
+      "target": "study_介入治疗",
+      "relation": "包含文献类型"
+    },
+    {
+      "source": "subtype_pe",
+      "target": "study_抗凝_治疗",
+      "relation": "包含文献类型"
+    },
+    {
+      "source": "subtype_other",
+      "target": "study_抗凝_治疗",
+      "relation": "包含文献类型"
+    },
+    {
+      "source": "subtype_dvt",
+      "target": "study_真实世界_队列",
+      "relation": "包含文献类型"
+    },
+    {
+      "source": "evidence_layer",
+      "target": "study_pe",
+      "relation": "研究类型"
+    },
+    {
+      "source": "subtype_pe",
+      "target": "study_pe",
+      "relation": "包含文献类型"
+    },
+    {
+      "source": "study_pe",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_core_guideline_dvt_2026_4th",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_core_guideline_dvt_2026_4th",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_core_guideline_dvt_2026_4th",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_core_guideline_dvt_2026_4th",
+      "target": "tier_core_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_core_guideline_dvt_2026_4th",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_core_guideline_dvt_2026_4th",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_core_guideline_dvt_2026_4th",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_core_guideline_dvt_2026_4th",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_core_guideline_dvt_2026_4th",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_core_guideline_dvt_2026_4th",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_core_guideline_dvt_2026_4th",
+      "target": "topic_prevention_care",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_de28371f1e",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_de28371f1e",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_de28371f1e",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_de28371f1e",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_de28371f1e",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_de28371f1e",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_de28371f1e",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_de28371f1e",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_de28371f1e",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_de28371f1e",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_de28371f1e",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_de28371f1e",
+      "target": "topic_prevention_care",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_60c056eedd",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_60c056eedd",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_60c056eedd",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_60c056eedd",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_60c056eedd",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_60c056eedd",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_60c056eedd",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_60c056eedd",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_60c056eedd",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_60c056eedd",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_60c056eedd",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_b9b480de9f",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_b9b480de9f",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_b9b480de9f",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_b9b480de9f",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_b9b480de9f",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_b9b480de9f",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_b9b480de9f",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_b9b480de9f",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_b9b480de9f",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_b9b480de9f",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_23b3dddd19",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_23b3dddd19",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_23b3dddd19",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_23b3dddd19",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_23b3dddd19",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_23b3dddd19",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_23b3dddd19",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_23b3dddd19",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_23b3dddd19",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_23b3dddd19",
+      "target": "topic_prevention_care",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_0ee2859e08",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_0ee2859e08",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_0ee2859e08",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_0ee2859e08",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_0ee2859e08",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_0ee2859e08",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_0ee2859e08",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_0ee2859e08",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_0ee2859e08",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_0ee2859e08",
+      "target": "topic_prevention_care",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_91d05bb62b",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_91d05bb62b",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_91d05bb62b",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_91d05bb62b",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_91d05bb62b",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_91d05bb62b",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_91d05bb62b",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_91d05bb62b",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_406df7eb1b",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_406df7eb1b",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_406df7eb1b",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_406df7eb1b",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_406df7eb1b",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_406df7eb1b",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_406df7eb1b",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_406df7eb1b",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_406df7eb1b",
+      "target": "topic_prevention_care",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_22226b3e35",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_22226b3e35",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_22226b3e35",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_22226b3e35",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_22226b3e35",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_22226b3e35",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_22226b3e35",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_22226b3e35",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_22226b3e35",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_22226b3e35",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_22226b3e35",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_f770e79df5",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_f770e79df5",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_f770e79df5",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_f770e79df5",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_f770e79df5",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_f770e79df5",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_f770e79df5",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_f770e79df5",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_4f8c23a183",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_4f8c23a183",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_4f8c23a183",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_4f8c23a183",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_4f8c23a183",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_4f8c23a183",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_4f8c23a183",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_4f8c23a183",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_4f8c23a183",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_0abf483e4f",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_0abf483e4f",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_0abf483e4f",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_0abf483e4f",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_0abf483e4f",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_0abf483e4f",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_0abf483e4f",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_0abf483e4f",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_0abf483e4f",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_6d4f860ed5",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_6d4f860ed5",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_6d4f860ed5",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_6d4f860ed5",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_6d4f860ed5",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_6d4f860ed5",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_6d4f860ed5",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_6d4f860ed5",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_6d4f860ed5",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_6d4f860ed5",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_8237d65772",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_8237d65772",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_8237d65772",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_8237d65772",
+      "target": "tier_cohort",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_8237d65772",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_8237d65772",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_8237d65772",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_8237d65772",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_8237d65772",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_8237d65772",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_f844c69d02",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_f844c69d02",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_f844c69d02",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_f844c69d02",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_f844c69d02",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_f844c69d02",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_f844c69d02",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_f844c69d02",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_f844c69d02",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_b004bf4323",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_b004bf4323",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_b004bf4323",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_b004bf4323",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_b004bf4323",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_b004bf4323",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_b004bf4323",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_b004bf4323",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_b004bf4323",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_6d61a0803f",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_6d61a0803f",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_6d61a0803f",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_6d61a0803f",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_6d61a0803f",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_6d61a0803f",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_6d61a0803f",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_6d61a0803f",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_6d61a0803f",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_6d61a0803f",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_6d61a0803f",
+      "target": "topic_prevention_care",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_1553406afb",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_1553406afb",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_1553406afb",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_1553406afb",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_1553406afb",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1553406afb",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1553406afb",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1553406afb",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1553406afb",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1553406afb",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_45debac241",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_45debac241",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_45debac241",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_45debac241",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_45debac241",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_45debac241",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_45debac241",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_45debac241",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_45debac241",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_3742b92229",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_3742b92229",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_3742b92229",
+      "target": "study_介入治疗",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_3742b92229",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_3742b92229",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_3742b92229",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_3742b92229",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_9898c47d91",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_9898c47d91",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_9898c47d91",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_9898c47d91",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_9898c47d91",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_9898c47d91",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_9898c47d91",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_d533cfc33a",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_d533cfc33a",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_d533cfc33a",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_d533cfc33a",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_d533cfc33a",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d533cfc33a",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d533cfc33a",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d533cfc33a",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d533cfc33a",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d533cfc33a",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_d3b43687a0",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_d3b43687a0",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_d3b43687a0",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_d3b43687a0",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_d3b43687a0",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d3b43687a0",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d3b43687a0",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d3b43687a0",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d3b43687a0",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d3b43687a0",
+      "target": "topic_prevention_care",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_06c1e2a119",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_06c1e2a119",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_06c1e2a119",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_06c1e2a119",
+      "target": "tier_cohort",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_06c1e2a119",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_06c1e2a119",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_06c1e2a119",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_b2bc81374c",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_b2bc81374c",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_b2bc81374c",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_b2bc81374c",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_b2bc81374c",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_b2bc81374c",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_b2bc81374c",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_b2bc81374c",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_782e9d3890",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_782e9d3890",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_782e9d3890",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_782e9d3890",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_782e9d3890",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_782e9d3890",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_782e9d3890",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_782e9d3890",
+      "target": "topic_prevention_care",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_c049f9ea48",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_c049f9ea48",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_c049f9ea48",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_c049f9ea48",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_c049f9ea48",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_c049f9ea48",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_c049f9ea48",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_c049f9ea48",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_c049f9ea48",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_c049f9ea48",
+      "target": "topic_prevention_care",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_e47491ee6d",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_e47491ee6d",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_e47491ee6d",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_e47491ee6d",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_e47491ee6d",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_e47491ee6d",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_e47491ee6d",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_e47491ee6d",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_e47491ee6d",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_e47491ee6d",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_2244821029",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_2244821029",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_2244821029",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_2244821029",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_2244821029",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_2244821029",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_2244821029",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_c0fa170c34",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_c0fa170c34",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_c0fa170c34",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_c0fa170c34",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_c0fa170c34",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_c0fa170c34",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_c0fa170c34",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_5bfd60e5fb",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_5bfd60e5fb",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_5bfd60e5fb",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_5bfd60e5fb",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_5bfd60e5fb",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_5bfd60e5fb",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_5bfd60e5fb",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_5bfd60e5fb",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_5bfd60e5fb",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_d40d2fa970",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_d40d2fa970",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_d40d2fa970",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_d40d2fa970",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_d40d2fa970",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d40d2fa970",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d40d2fa970",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d40d2fa970",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d40d2fa970",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_f209aa8099",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_f209aa8099",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_f209aa8099",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_f209aa8099",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_f209aa8099",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_f209aa8099",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_f209aa8099",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_f209aa8099",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_f209aa8099",
+      "target": "topic_prevention_care",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_489b75b9be",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_489b75b9be",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_489b75b9be",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_489b75b9be",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_489b75b9be",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_489b75b9be",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_489b75b9be",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_489b75b9be",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_3ba1335791",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_3ba1335791",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_3ba1335791",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_3ba1335791",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_3ba1335791",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_3ba1335791",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_3ba1335791",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_3ba1335791",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_3ba1335791",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_4f93ae473a",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_4f93ae473a",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_4f93ae473a",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_4f93ae473a",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_4f93ae473a",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_4f93ae473a",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_4f93ae473a",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_4f93ae473a",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_2bc5f797a3",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_2bc5f797a3",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_2bc5f797a3",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_2bc5f797a3",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_2bc5f797a3",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_2bc5f797a3",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_2bc5f797a3",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_2bc5f797a3",
+      "target": "topic_prevention_care",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_eb4135446a",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_eb4135446a",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_eb4135446a",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_eb4135446a",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_eb4135446a",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_eb4135446a",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_eb4135446a",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_f0fc549a74",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_f0fc549a74",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_f0fc549a74",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_f0fc549a74",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_f0fc549a74",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_f0fc549a74",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_f0fc549a74",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_f0fc549a74",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_f0fc549a74",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_1be1fbe04b",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_1be1fbe04b",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_1be1fbe04b",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_1be1fbe04b",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_1be1fbe04b",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1be1fbe04b",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1be1fbe04b",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1be1fbe04b",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_1540d48bfd",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_1540d48bfd",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_1540d48bfd",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_1540d48bfd",
+      "target": "tier_cohort",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_1540d48bfd",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1540d48bfd",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1540d48bfd",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1540d48bfd",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1540d48bfd",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_df4d7b8efc",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_df4d7b8efc",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_df4d7b8efc",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_df4d7b8efc",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_df4d7b8efc",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_df4d7b8efc",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_df4d7b8efc",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_df4d7b8efc",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_df4d7b8efc",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_e0960dab9b",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_e0960dab9b",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_e0960dab9b",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_e0960dab9b",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_e0960dab9b",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_e0960dab9b",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_e0960dab9b",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_e0960dab9b",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_c2f014d1af",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_c2f014d1af",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_c2f014d1af",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_c2f014d1af",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_c2f014d1af",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_c2f014d1af",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_c2f014d1af",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_c2f014d1af",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_7d1e799aa1",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_7d1e799aa1",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_7d1e799aa1",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_7d1e799aa1",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_7d1e799aa1",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_7d1e799aa1",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_7d1e799aa1",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_7d1e799aa1",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_7d1e799aa1",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_943f2b4282",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_943f2b4282",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_943f2b4282",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_943f2b4282",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_943f2b4282",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_943f2b4282",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_943f2b4282",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_943f2b4282",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_943f2b4282",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_943f2b4282",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_1e2dec9dbb",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_1e2dec9dbb",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_1e2dec9dbb",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_1e2dec9dbb",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_1e2dec9dbb",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1e2dec9dbb",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1e2dec9dbb",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1e2dec9dbb",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_7b2f8ee27a",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_7b2f8ee27a",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_7b2f8ee27a",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_7b2f8ee27a",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_7b2f8ee27a",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_7b2f8ee27a",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_7b2f8ee27a",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_7b2f8ee27a",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_dac27e9a90",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_dac27e9a90",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_dac27e9a90",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_dac27e9a90",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_dac27e9a90",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_dac27e9a90",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_dac27e9a90",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_dac27e9a90",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_dac27e9a90",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_cd48c7afb3",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_cd48c7afb3",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_cd48c7afb3",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_cd48c7afb3",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_cd48c7afb3",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_cd48c7afb3",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_cd48c7afb3",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_cd48c7afb3",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_d386d952e4",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_d386d952e4",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_d386d952e4",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_d386d952e4",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_d386d952e4",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d386d952e4",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d386d952e4",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d386d952e4",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d386d952e4",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_1b276b4ad7",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_1b276b4ad7",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_1b276b4ad7",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_1b276b4ad7",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_1b276b4ad7",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1b276b4ad7",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1b276b4ad7",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1b276b4ad7",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1b276b4ad7",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1b276b4ad7",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_1b276b4ad7",
+      "target": "topic_prevention_care",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_4fac126bdd",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_4fac126bdd",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_4fac126bdd",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_4fac126bdd",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_4fac126bdd",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_4fac126bdd",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_4fac126bdd",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_3202f3456f",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_3202f3456f",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_3202f3456f",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_3202f3456f",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_3202f3456f",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_3202f3456f",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_3202f3456f",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_3202f3456f",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_3202f3456f",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_3202f3456f",
+      "target": "topic_prevention_care",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_5eabc2b92f",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_5eabc2b92f",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_5eabc2b92f",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_5eabc2b92f",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_5eabc2b92f",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_5eabc2b92f",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_5eabc2b92f",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_5eabc2b92f",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_5eabc2b92f",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_696c4bebae",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_696c4bebae",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_696c4bebae",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_696c4bebae",
+      "target": "tier_cohort",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_696c4bebae",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_696c4bebae",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_696c4bebae",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_696c4bebae",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_fab700768e",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_fab700768e",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_fab700768e",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_fab700768e",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_fab700768e",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_fab700768e",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_fab700768e",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_fab700768e",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_fab700768e",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_d56ee605ba",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_d56ee605ba",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_d56ee605ba",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_d56ee605ba",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_d56ee605ba",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d56ee605ba",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d56ee605ba",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d56ee605ba",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_86fff4ef92",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_86fff4ef92",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_86fff4ef92",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_86fff4ef92",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_86fff4ef92",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_86fff4ef92",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_86fff4ef92",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_86fff4ef92",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_86fff4ef92",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_86fff4ef92",
+      "target": "topic_prevention_care",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_260991a801",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_260991a801",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_260991a801",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_260991a801",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_260991a801",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_260991a801",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_260991a801",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_260991a801",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_2f54dffd00",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_2f54dffd00",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_2f54dffd00",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_2f54dffd00",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_2f54dffd00",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_2f54dffd00",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_2f54dffd00",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_2f54dffd00",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_4f50031de6",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_4f50031de6",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_4f50031de6",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_4f50031de6",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_4f50031de6",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_4f50031de6",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_4f50031de6",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_4f50031de6",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_d5cfc76934",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_d5cfc76934",
+      "target": "subtype_other",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_d5cfc76934",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_d5cfc76934",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_d5cfc76934",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d5cfc76934",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d5cfc76934",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d5cfc76934",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d5cfc76934",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_455cfd4664",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_455cfd4664",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_455cfd4664",
+      "target": "study_真实世界_队列",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_455cfd4664",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_455cfd4664",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_455cfd4664",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_20735b6ac6",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_20735b6ac6",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_20735b6ac6",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_20735b6ac6",
+      "target": "tier_cohort",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_20735b6ac6",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_20735b6ac6",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_20735b6ac6",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_20735b6ac6",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_20735b6ac6",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_381920b0ed",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_381920b0ed",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_381920b0ed",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_381920b0ed",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_381920b0ed",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_381920b0ed",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_381920b0ed",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_381920b0ed",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_7139b604ca",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_7139b604ca",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_7139b604ca",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_7139b604ca",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_7139b604ca",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_7139b604ca",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_7139b604ca",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_7139b604ca",
+      "target": "topic_prevention_care",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_a4a7c085d0",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_a4a7c085d0",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_a4a7c085d0",
+      "target": "study_真实世界_队列",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_a4a7c085d0",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_a4a7c085d0",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_a4a7c085d0",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_a4a7c085d0",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_c10f391f09",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_c10f391f09",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_c10f391f09",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_c10f391f09",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_c10f391f09",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_c10f391f09",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_c10f391f09",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_c10f391f09",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_c093293396",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_c093293396",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_c093293396",
+      "target": "study_真实世界_队列",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_c093293396",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_c093293396",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_c093293396",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_c093293396",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_f05f193fe1",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_f05f193fe1",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_f05f193fe1",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_f05f193fe1",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_f05f193fe1",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_f05f193fe1",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_f05f193fe1",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_f05f193fe1",
+      "target": "topic_prevention_care",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_31e0aa3aaf",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_31e0aa3aaf",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_31e0aa3aaf",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_31e0aa3aaf",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_31e0aa3aaf",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_31e0aa3aaf",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_31e0aa3aaf",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_d829d7e9f2",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_d829d7e9f2",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_d829d7e9f2",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_d829d7e9f2",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_d829d7e9f2",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d829d7e9f2",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d829d7e9f2",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_d829d7e9f2",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_118190d81a",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_118190d81a",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_118190d81a",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_118190d81a",
+      "target": "tier_cohort",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_118190d81a",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_118190d81a",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_118190d81a",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_118190d81a",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_a3e6743529",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_a3e6743529",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_a3e6743529",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_a3e6743529",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_a3e6743529",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_a3e6743529",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_a3e6743529",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_a3e6743529",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_2abcdcb140",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_2abcdcb140",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_2abcdcb140",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_2abcdcb140",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_2abcdcb140",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_2abcdcb140",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_2abcdcb140",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_2abcdcb140",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_8e8ee3437a",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_8e8ee3437a",
+      "target": "subtype_dvt",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_8e8ee3437a",
+      "target": "study_ai_预测模型",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_8e8ee3437a",
+      "target": "tier_general_literature",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_8e8ee3437a",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_8e8ee3437a",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_3787ac8214",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_3787ac8214",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_3787ac8214",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_3787ac8214",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_3787ac8214",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_3787ac8214",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_3787ac8214",
+      "target": "topic_anticoagulation",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_3787ac8214",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_3787ac8214",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_359d9c8574",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_359d9c8574",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_359d9c8574",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_359d9c8574",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_359d9c8574",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_359d9c8574",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_359d9c8574",
+      "target": "topic_intervention",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_359d9c8574",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_359d9c8574",
+      "target": "topic_bleeding_safety",
+      "relation": "主题"
+    },
+    {
+      "source": "literature_matrix",
+      "target": "evidence_pubmed_aebd45b6a1",
+      "relation": "优先证据"
+    },
+    {
+      "source": "evidence_pubmed_aebd45b6a1",
+      "target": "subtype_pe",
+      "relation": "研究亚型"
+    },
+    {
+      "source": "evidence_pubmed_aebd45b6a1",
+      "target": "study_指南共识",
+      "relation": "研究类型"
+    },
+    {
+      "source": "evidence_pubmed_aebd45b6a1",
+      "target": "tier_guideline",
+      "relation": "证据等级"
+    },
+    {
+      "source": "evidence_pubmed_aebd45b6a1",
+      "target": "topic_ai_model",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_aebd45b6a1",
+      "target": "topic_imaging",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_aebd45b6a1",
+      "target": "topic_cohort",
+      "relation": "主题"
+    },
+    {
+      "source": "evidence_pubmed_aebd45b6a1",
+      "target": "topic_guideline_review",
+      "relation": "主题"
+    },
+    {
+      "source": "topic_prevention_care",
+      "target": "perioperative_plan",
+      "relation": "证据支持",
+      "sourceType": "literature_bridge"
+    },
+    {
+      "source": "topic_prevention_care",
+      "target": "mechanical_prophylaxis",
+      "relation": "证据支持",
+      "sourceType": "literature_bridge"
+    },
+    {
+      "source": "topic_anticoagulation",
+      "target": "therapeutic_anticoagulation",
+      "relation": "证据支持",
+      "sourceType": "literature_bridge"
+    },
+    {
+      "source": "topic_anticoagulation",
+      "target": "pharmacologic_prophylaxis",
+      "relation": "证据支持",
+      "sourceType": "literature_bridge"
+    },
+    {
+      "source": "topic_bleeding_safety",
+      "target": "bleeding_assessment",
+      "relation": "证据支持",
+      "sourceType": "literature_bridge"
+    },
+    {
+      "source": "topic_imaging",
+      "target": "duplex_ultrasound",
+      "relation": "证据支持",
+      "sourceType": "literature_bridge"
+    },
+    {
+      "source": "topic_imaging",
+      "target": "pe_imaging",
+      "relation": "证据支持",
+      "sourceType": "literature_bridge"
+    },
+    {
+      "source": "topic_intervention",
+      "target": "thrombus_removal",
+      "relation": "证据支持",
+      "sourceType": "literature_bridge"
+    },
+    {
+      "source": "topic_ai_model",
+      "target": "vte_risk",
+      "relation": "预测支持",
+      "sourceType": "literature_bridge"
+    },
+    {
+      "source": "subtype_dvt",
+      "target": "symptomatic_dvt",
+      "relation": "疾病亚型",
+      "sourceType": "literature_bridge"
+    },
+    {
+      "source": "subtype_pe",
+      "target": "suspected_pe",
+      "relation": "疾病亚型",
+      "sourceType": "literature_bridge"
+    }
+  ],
+  "caseRules": [
+    {
+      "id": "case_a_emergency_path",
+      "label": "模拟病例 A 急症路径",
+      "triggers": [
+        "左下肢肿痛",
+        "张力明显升高",
+        "皮温降低",
+        "足背动脉消失"
+      ],
+      "minMatches": 2,
+      "highlightNodes": [
+        "symptomatic_dvt",
+        "limb_ischemia_signal",
+        "phlegmasia",
+        "urgent_triage",
+        "vascular_exam",
+        "duplex_ultrasound",
+        "cta_ctv",
+        "vascular_surgery_consult",
+        "therapeutic_anticoagulation",
+        "thrombus_removal",
+        "perioperative_plan"
+      ],
+      "summary": "该路径把普通高危围术期预防后置，优先处理肢体灌注受威胁相关急症线索。"
+    },
+    {
+      "id": "pregnancy_pe_path",
+      "label": "妊娠合并疑似 DVT/PE 路径",
+      "triggers": [
+        "怀孕",
+        "妊娠",
+        "左下肢胀痛",
+        "下肢胀痛",
+        "呼吸困难"
+      ],
+      "minMatches": 2,
+      "highlightNodes": [
+        "pregnancy_risk",
+        "immobility",
+        "obesity",
+        "ddimer_high",
+        "vte_risk",
+        "high_risk",
+        "symptomatic_dvt",
+        "suspected_pe",
+        "urgent_triage",
+        "duplex_ultrasound",
+        "pe_imaging",
+        "obstetric_consult",
+        "bleeding_assessment",
+        "therapeutic_anticoagulation",
+        "pregnancy_anticoagulation",
+        "nursing_reassessment",
+        "patient_education"
+      ],
+      "summary": "该路径把妊娠状态、下肢症状和呼吸困难合并判断，优先排查急性 DVT/PE，并在产科安全边界下制定抗凝和围术期策略。"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "provider": "auto",
+  "model": "",
+  "baseUrl": "https://api.openai.com/v1",
+  "timeoutMs": 180000,
+  "probeTimeoutMs": 1200,
+  "allowExternalForDemo": false,
+  "dataPolicy": {
+    "allowRealPatientData": false,
+    "requireDeidentifiedInput": true,
+    "note": "默认自动发现本地模型服务，但不会自动调用外部网络模型。外部模型仅可用于模拟病例、脱敏病例和公开文献；真实病历应在院内私有化模型或授权内网环境处理。"
+  }
+}

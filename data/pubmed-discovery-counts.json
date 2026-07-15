@@ -1,0 +1,152 @@
+{
+  "generatedAt": "2026-06-14T06:06:38.810Z",
+  "database": "PubMed",
+  "dateRange": "2006:2026[dp]",
+  "note": "Counts only. Use this to decide harvesting scope before fetching full records.",
+  "rows": [
+    {
+      "name": "coreTitle:all",
+      "query": "(\"venous thromboembolism\"[ti] OR \"deep vein thrombosis\"[ti] OR \"deep venous thrombosis\"[ti] OR \"pulmonary embolism\"[ti] OR \"venous thrombosis\"[ti] OR \"pulmonary artery embolism\"[ti]) AND 2006:2026[dp]",
+      "count": 37784,
+      "queryTranslation": "(\"venous thromboembolism\"[Title] OR \"deep vein thrombosis\"[Title] OR \"deep venous thrombosis\"[Title] OR \"pulmonary embolism\"[Title] OR \"venous thrombosis\"[Title] OR \"pulmonary artery embolism\"[Title]) AND 2006/01/01:2026/12/31[Date - Publication]"
+    },
+    {
+      "name": "coreTitle:guidelineReviewMeta",
+      "query": "(\"venous thromboembolism\"[ti] OR \"deep vein thrombosis\"[ti] OR \"deep venous thrombosis\"[ti] OR \"pulmonary embolism\"[ti] OR \"venous thrombosis\"[ti] OR \"pulmonary artery embolism\"[ti]) AND 2006:2026[dp] AND (guideline[pt] OR review[pt] OR systematic review[pt] OR meta-analysis[pt])",
+      "count": 6106,
+      "queryTranslation": "(\"venous thromboembolism\"[Title] OR \"deep vein thrombosis\"[Title] OR \"deep venous thrombosis\"[Title] OR \"pulmonary embolism\"[Title] OR \"venous thrombosis\"[Title] OR \"pulmonary artery embolism\"[Title]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"guideline\"[Publication Type] OR \"review\"[Publication Type] OR \"systematic review\"[Publication Type] OR \"meta-analysis\"[Publication Type])"
+    },
+    {
+      "name": "coreTitle:aiPrediction",
+      "query": "(\"venous thromboembolism\"[ti] OR \"deep vein thrombosis\"[ti] OR \"deep venous thrombosis\"[ti] OR \"pulmonary embolism\"[ti] OR \"venous thrombosis\"[ti] OR \"pulmonary artery embolism\"[ti]) AND 2006:2026[dp] AND (\"artificial intelligence\"[tiab] OR \"machine learning\"[tiab] OR \"deep learning\"[tiab] OR prediction[tiab] OR model[tiab] OR nomogram[tiab])",
+      "count": 4413,
+      "queryTranslation": "(\"venous thromboembolism\"[Title] OR \"deep vein thrombosis\"[Title] OR \"deep venous thrombosis\"[Title] OR \"pulmonary embolism\"[Title] OR \"venous thrombosis\"[Title] OR \"pulmonary artery embolism\"[Title]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"artificial intelligence\"[Title/Abstract] OR \"machine learning\"[Title/Abstract] OR \"deep learning\"[Title/Abstract] OR \"prediction\"[Title/Abstract] OR \"model\"[Title/Abstract] OR \"nomogram\"[Title/Abstract])"
+    },
+    {
+      "name": "coreTitle:imagingDiagnosis",
+      "query": "(\"venous thromboembolism\"[ti] OR \"deep vein thrombosis\"[ti] OR \"deep venous thrombosis\"[ti] OR \"pulmonary embolism\"[ti] OR \"venous thrombosis\"[ti] OR \"pulmonary artery embolism\"[ti]) AND 2006:2026[dp] AND (CTPA[tiab] OR \"computed tomography pulmonary angiography\"[tiab] OR ultrasound[tiab] OR imaging[tiab] OR diagnosis[tiab])",
+      "count": 11543,
+      "queryTranslation": "(\"venous thromboembolism\"[Title] OR \"deep vein thrombosis\"[Title] OR \"deep venous thrombosis\"[Title] OR \"pulmonary embolism\"[Title] OR \"venous thrombosis\"[Title] OR \"pulmonary artery embolism\"[Title]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"CTPA\"[Title/Abstract] OR \"computed tomography pulmonary angiography\"[Title/Abstract] OR \"ultrasound\"[Title/Abstract] OR \"imaging\"[Title/Abstract] OR \"diagnosis\"[Title/Abstract])"
+    },
+    {
+      "name": "coreTitle:preventionProphylaxis",
+      "query": "(\"venous thromboembolism\"[ti] OR \"deep vein thrombosis\"[ti] OR \"deep venous thrombosis\"[ti] OR \"pulmonary embolism\"[ti] OR \"venous thrombosis\"[ti] OR \"pulmonary artery embolism\"[ti]) AND 2006:2026[dp] AND (prevention[tiab] OR prophylaxis[tiab] OR thromboprophylaxis[tiab])",
+      "count": 7960,
+      "queryTranslation": "(\"venous thromboembolism\"[Title] OR \"deep vein thrombosis\"[Title] OR \"deep venous thrombosis\"[Title] OR \"pulmonary embolism\"[Title] OR \"venous thrombosis\"[Title] OR \"pulmonary artery embolism\"[Title]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"prevention\"[Title/Abstract] OR \"prophylaxis\"[Title/Abstract] OR \"thromboprophylaxis\"[Title/Abstract])"
+    },
+    {
+      "name": "coreTitle:anticoagulationBleeding",
+      "query": "(\"venous thromboembolism\"[ti] OR \"deep vein thrombosis\"[ti] OR \"deep venous thrombosis\"[ti] OR \"pulmonary embolism\"[ti] OR \"venous thrombosis\"[ti] OR \"pulmonary artery embolism\"[ti]) AND 2006:2026[dp] AND (anticoagulation[tiab] OR anticoagulant[tiab] OR heparin[tiab] OR warfarin[tiab] OR rivaroxaban[tiab] OR bleeding[tiab])",
+      "count": 12844,
+      "queryTranslation": "(\"venous thromboembolism\"[Title] OR \"deep vein thrombosis\"[Title] OR \"deep venous thrombosis\"[Title] OR \"pulmonary embolism\"[Title] OR \"venous thrombosis\"[Title] OR \"pulmonary artery embolism\"[Title]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"anticoagulation\"[Title/Abstract] OR \"anticoagulant\"[Title/Abstract] OR \"heparin\"[Title/Abstract] OR \"warfarin\"[Title/Abstract] OR \"rivaroxaban\"[Title/Abstract] OR \"bleeding\"[Title/Abstract])"
+    },
+    {
+      "name": "coreTitle:interventionPERT",
+      "query": "(\"venous thromboembolism\"[ti] OR \"deep vein thrombosis\"[ti] OR \"deep venous thrombosis\"[ti] OR \"pulmonary embolism\"[ti] OR \"venous thrombosis\"[ti] OR \"pulmonary artery embolism\"[ti]) AND 2006:2026[dp] AND (PERT[tiab] OR catheter[tiab] OR thrombectomy[tiab] OR thrombolysis[tiab] OR filter[tiab] OR endovascular[tiab])",
+      "count": 5246,
+      "queryTranslation": "(\"venous thromboembolism\"[Title] OR \"deep vein thrombosis\"[Title] OR \"deep venous thrombosis\"[Title] OR \"pulmonary embolism\"[Title] OR \"venous thrombosis\"[Title] OR \"pulmonary artery embolism\"[Title]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"PERT\"[Title/Abstract] OR \"catheter\"[Title/Abstract] OR \"thrombectomy\"[Title/Abstract] OR \"thrombolysis\"[Title/Abstract] OR \"filter\"[Title/Abstract] OR \"endovascular\"[Title/Abstract])"
+    },
+    {
+      "name": "coreTitle:realWorldCohort",
+      "query": "(\"venous thromboembolism\"[ti] OR \"deep vein thrombosis\"[ti] OR \"deep venous thrombosis\"[ti] OR \"pulmonary embolism\"[ti] OR \"venous thrombosis\"[ti] OR \"pulmonary artery embolism\"[ti]) AND 2006:2026[dp] AND (\"real-world\"[tiab] OR cohort[tiab] OR registry[tiab] OR epidemiology[tiab])",
+      "count": 6867,
+      "queryTranslation": "(\"venous thromboembolism\"[Title] OR \"deep vein thrombosis\"[Title] OR \"deep venous thrombosis\"[Title] OR \"pulmonary embolism\"[Title] OR \"venous thrombosis\"[Title] OR \"pulmonary artery embolism\"[Title]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"real-world\"[Title/Abstract] OR \"cohort\"[Title/Abstract] OR \"registry\"[Title/Abstract] OR \"epidemiology\"[Title/Abstract])"
+    },
+    {
+      "name": "expandedTitleAbstract:all",
+      "query": "(\"venous thromboembolism\"[tiab] OR \"deep vein thrombosis\"[tiab] OR \"deep venous thrombosis\"[tiab] OR \"pulmonary embolism\"[tiab] OR \"venous thrombosis\"[tiab] OR \"pulmonary artery embolism\"[tiab]) AND 2006:2026[dp]",
+      "count": 80547,
+      "queryTranslation": "(\"venous thromboembolism\"[Title/Abstract] OR \"deep vein thrombosis\"[Title/Abstract] OR \"deep venous thrombosis\"[Title/Abstract] OR \"pulmonary embolism\"[Title/Abstract] OR \"venous thrombosis\"[Title/Abstract] OR \"pulmonary artery embolism\"[Title/Abstract]) AND 2006/01/01:2026/12/31[Date - Publication]"
+    },
+    {
+      "name": "expandedTitleAbstract:guidelineReviewMeta",
+      "query": "(\"venous thromboembolism\"[tiab] OR \"deep vein thrombosis\"[tiab] OR \"deep venous thrombosis\"[tiab] OR \"pulmonary embolism\"[tiab] OR \"venous thrombosis\"[tiab] OR \"pulmonary artery embolism\"[tiab]) AND 2006:2026[dp] AND (guideline[pt] OR review[pt] OR systematic review[pt] OR meta-analysis[pt])",
+      "count": 15309,
+      "queryTranslation": "(\"venous thromboembolism\"[Title/Abstract] OR \"deep vein thrombosis\"[Title/Abstract] OR \"deep venous thrombosis\"[Title/Abstract] OR \"pulmonary embolism\"[Title/Abstract] OR \"venous thrombosis\"[Title/Abstract] OR \"pulmonary artery embolism\"[Title/Abstract]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"guideline\"[Publication Type] OR \"review\"[Publication Type] OR \"systematic review\"[Publication Type] OR \"meta-analysis\"[Publication Type])"
+    },
+    {
+      "name": "expandedTitleAbstract:aiPrediction",
+      "query": "(\"venous thromboembolism\"[tiab] OR \"deep vein thrombosis\"[tiab] OR \"deep venous thrombosis\"[tiab] OR \"pulmonary embolism\"[tiab] OR \"venous thrombosis\"[tiab] OR \"pulmonary artery embolism\"[tiab]) AND 2006:2026[dp] AND (\"artificial intelligence\"[tiab] OR \"machine learning\"[tiab] OR \"deep learning\"[tiab] OR prediction[tiab] OR model[tiab] OR nomogram[tiab])",
+      "count": 7655,
+      "queryTranslation": "(\"venous thromboembolism\"[Title/Abstract] OR \"deep vein thrombosis\"[Title/Abstract] OR \"deep venous thrombosis\"[Title/Abstract] OR \"pulmonary embolism\"[Title/Abstract] OR \"venous thrombosis\"[Title/Abstract] OR \"pulmonary artery embolism\"[Title/Abstract]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"artificial intelligence\"[Title/Abstract] OR \"machine learning\"[Title/Abstract] OR \"deep learning\"[Title/Abstract] OR \"prediction\"[Title/Abstract] OR \"model\"[Title/Abstract] OR \"nomogram\"[Title/Abstract])"
+    },
+    {
+      "name": "expandedTitleAbstract:imagingDiagnosis",
+      "query": "(\"venous thromboembolism\"[tiab] OR \"deep vein thrombosis\"[tiab] OR \"deep venous thrombosis\"[tiab] OR \"pulmonary embolism\"[tiab] OR \"venous thrombosis\"[tiab] OR \"pulmonary artery embolism\"[tiab]) AND 2006:2026[dp] AND (CTPA[tiab] OR \"computed tomography pulmonary angiography\"[tiab] OR ultrasound[tiab] OR imaging[tiab] OR diagnosis[tiab])",
+      "count": 23138,
+      "queryTranslation": "(\"venous thromboembolism\"[Title/Abstract] OR \"deep vein thrombosis\"[Title/Abstract] OR \"deep venous thrombosis\"[Title/Abstract] OR \"pulmonary embolism\"[Title/Abstract] OR \"venous thrombosis\"[Title/Abstract] OR \"pulmonary artery embolism\"[Title/Abstract]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"CTPA\"[Title/Abstract] OR \"computed tomography pulmonary angiography\"[Title/Abstract] OR \"ultrasound\"[Title/Abstract] OR \"imaging\"[Title/Abstract] OR \"diagnosis\"[Title/Abstract])"
+    },
+    {
+      "name": "expandedTitleAbstract:preventionProphylaxis",
+      "query": "(\"venous thromboembolism\"[tiab] OR \"deep vein thrombosis\"[tiab] OR \"deep venous thrombosis\"[tiab] OR \"pulmonary embolism\"[tiab] OR \"venous thrombosis\"[tiab] OR \"pulmonary artery embolism\"[tiab]) AND 2006:2026[dp] AND (prevention[tiab] OR prophylaxis[tiab] OR thromboprophylaxis[tiab])",
+      "count": 15514,
+      "queryTranslation": "(\"venous thromboembolism\"[Title/Abstract] OR \"deep vein thrombosis\"[Title/Abstract] OR \"deep venous thrombosis\"[Title/Abstract] OR \"pulmonary embolism\"[Title/Abstract] OR \"venous thrombosis\"[Title/Abstract] OR \"pulmonary artery embolism\"[Title/Abstract]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"prevention\"[Title/Abstract] OR \"prophylaxis\"[Title/Abstract] OR \"thromboprophylaxis\"[Title/Abstract])"
+    },
+    {
+      "name": "expandedTitleAbstract:anticoagulationBleeding",
+      "query": "(\"venous thromboembolism\"[tiab] OR \"deep vein thrombosis\"[tiab] OR \"deep venous thrombosis\"[tiab] OR \"pulmonary embolism\"[tiab] OR \"venous thrombosis\"[tiab] OR \"pulmonary artery embolism\"[tiab]) AND 2006:2026[dp] AND (anticoagulation[tiab] OR anticoagulant[tiab] OR heparin[tiab] OR warfarin[tiab] OR rivaroxaban[tiab] OR bleeding[tiab])",
+      "count": 26969,
+      "queryTranslation": "(\"venous thromboembolism\"[Title/Abstract] OR \"deep vein thrombosis\"[Title/Abstract] OR \"deep venous thrombosis\"[Title/Abstract] OR \"pulmonary embolism\"[Title/Abstract] OR \"venous thrombosis\"[Title/Abstract] OR \"pulmonary artery embolism\"[Title/Abstract]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"anticoagulation\"[Title/Abstract] OR \"anticoagulant\"[Title/Abstract] OR \"heparin\"[Title/Abstract] OR \"warfarin\"[Title/Abstract] OR \"rivaroxaban\"[Title/Abstract] OR \"bleeding\"[Title/Abstract])"
+    },
+    {
+      "name": "expandedTitleAbstract:interventionPERT",
+      "query": "(\"venous thromboembolism\"[tiab] OR \"deep vein thrombosis\"[tiab] OR \"deep venous thrombosis\"[tiab] OR \"pulmonary embolism\"[tiab] OR \"venous thrombosis\"[tiab] OR \"pulmonary artery embolism\"[tiab]) AND 2006:2026[dp] AND (PERT[tiab] OR catheter[tiab] OR thrombectomy[tiab] OR thrombolysis[tiab] OR filter[tiab] OR endovascular[tiab])",
+      "count": 10005,
+      "queryTranslation": "(\"venous thromboembolism\"[Title/Abstract] OR \"deep vein thrombosis\"[Title/Abstract] OR \"deep venous thrombosis\"[Title/Abstract] OR \"pulmonary embolism\"[Title/Abstract] OR \"venous thrombosis\"[Title/Abstract] OR \"pulmonary artery embolism\"[Title/Abstract]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"PERT\"[Title/Abstract] OR \"catheter\"[Title/Abstract] OR \"thrombectomy\"[Title/Abstract] OR \"thrombolysis\"[Title/Abstract] OR \"filter\"[Title/Abstract] OR \"endovascular\"[Title/Abstract])"
+    },
+    {
+      "name": "expandedTitleAbstract:realWorldCohort",
+      "query": "(\"venous thromboembolism\"[tiab] OR \"deep vein thrombosis\"[tiab] OR \"deep venous thrombosis\"[tiab] OR \"pulmonary embolism\"[tiab] OR \"venous thrombosis\"[tiab] OR \"pulmonary artery embolism\"[tiab]) AND 2006:2026[dp] AND (\"real-world\"[tiab] OR cohort[tiab] OR registry[tiab] OR epidemiology[tiab])",
+      "count": 13948,
+      "queryTranslation": "(\"venous thromboembolism\"[Title/Abstract] OR \"deep vein thrombosis\"[Title/Abstract] OR \"deep venous thrombosis\"[Title/Abstract] OR \"pulmonary embolism\"[Title/Abstract] OR \"venous thrombosis\"[Title/Abstract] OR \"pulmonary artery embolism\"[Title/Abstract]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"real-world\"[Title/Abstract] OR \"cohort\"[Title/Abstract] OR \"registry\"[Title/Abstract] OR \"epidemiology\"[Title/Abstract])"
+    },
+    {
+      "name": "mesh:all",
+      "query": "(\"Venous Thromboembolism\"[mh] OR \"Pulmonary Embolism\"[mh] OR \"Venous Thrombosis\"[mh]) AND 2006:2026[dp]",
+      "count": 62745,
+      "queryTranslation": "(\"Venous Thromboembolism\"[MeSH Terms] OR \"Pulmonary Embolism\"[MeSH Terms] OR \"Venous Thrombosis\"[MeSH Terms]) AND 2006/01/01:2026/12/31[Date - Publication]"
+    },
+    {
+      "name": "mesh:guidelineReviewMeta",
+      "query": "(\"Venous Thromboembolism\"[mh] OR \"Pulmonary Embolism\"[mh] OR \"Venous Thrombosis\"[mh]) AND 2006:2026[dp] AND (guideline[pt] OR review[pt] OR systematic review[pt] OR meta-analysis[pt])",
+      "count": 11429,
+      "queryTranslation": "(\"Venous Thromboembolism\"[MeSH Terms] OR \"Pulmonary Embolism\"[MeSH Terms] OR \"Venous Thrombosis\"[MeSH Terms]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"guideline\"[Publication Type] OR \"review\"[Publication Type] OR \"systematic review\"[Publication Type] OR \"meta-analysis\"[Publication Type])"
+    },
+    {
+      "name": "mesh:aiPrediction",
+      "query": "(\"Venous Thromboembolism\"[mh] OR \"Pulmonary Embolism\"[mh] OR \"Venous Thrombosis\"[mh]) AND 2006:2026[dp] AND (\"artificial intelligence\"[tiab] OR \"machine learning\"[tiab] OR \"deep learning\"[tiab] OR prediction[tiab] OR model[tiab] OR nomogram[tiab])",
+      "count": 5620,
+      "queryTranslation": "(\"Venous Thromboembolism\"[MeSH Terms] OR \"Pulmonary Embolism\"[MeSH Terms] OR \"Venous Thrombosis\"[MeSH Terms]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"artificial intelligence\"[Title/Abstract] OR \"machine learning\"[Title/Abstract] OR \"deep learning\"[Title/Abstract] OR \"prediction\"[Title/Abstract] OR \"model\"[Title/Abstract] OR \"nomogram\"[Title/Abstract])"
+    },
+    {
+      "name": "mesh:imagingDiagnosis",
+      "query": "(\"Venous Thromboembolism\"[mh] OR \"Pulmonary Embolism\"[mh] OR \"Venous Thrombosis\"[mh]) AND 2006:2026[dp] AND (CTPA[tiab] OR \"computed tomography pulmonary angiography\"[tiab] OR ultrasound[tiab] OR imaging[tiab] OR diagnosis[tiab])",
+      "count": 16308,
+      "queryTranslation": "(\"Venous Thromboembolism\"[MeSH Terms] OR \"Pulmonary Embolism\"[MeSH Terms] OR \"Venous Thrombosis\"[MeSH Terms]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"CTPA\"[Title/Abstract] OR \"computed tomography pulmonary angiography\"[Title/Abstract] OR \"ultrasound\"[Title/Abstract] OR \"imaging\"[Title/Abstract] OR \"diagnosis\"[Title/Abstract])"
+    },
+    {
+      "name": "mesh:preventionProphylaxis",
+      "query": "(\"Venous Thromboembolism\"[mh] OR \"Pulmonary Embolism\"[mh] OR \"Venous Thrombosis\"[mh]) AND 2006:2026[dp] AND (prevention[tiab] OR prophylaxis[tiab] OR thromboprophylaxis[tiab])",
+      "count": 11522,
+      "queryTranslation": "(\"Venous Thromboembolism\"[MeSH Terms] OR \"Pulmonary Embolism\"[MeSH Terms] OR \"Venous Thrombosis\"[MeSH Terms]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"prevention\"[Title/Abstract] OR \"prophylaxis\"[Title/Abstract] OR \"thromboprophylaxis\"[Title/Abstract])"
+    },
+    {
+      "name": "mesh:anticoagulationBleeding",
+      "query": "(\"Venous Thromboembolism\"[mh] OR \"Pulmonary Embolism\"[mh] OR \"Venous Thrombosis\"[mh]) AND 2006:2026[dp] AND (anticoagulation[tiab] OR anticoagulant[tiab] OR heparin[tiab] OR warfarin[tiab] OR rivaroxaban[tiab] OR bleeding[tiab])",
+      "count": 18589,
+      "queryTranslation": "(\"Venous Thromboembolism\"[MeSH Terms] OR \"Pulmonary Embolism\"[MeSH Terms] OR \"Venous Thrombosis\"[MeSH Terms]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"anticoagulation\"[Title/Abstract] OR \"anticoagulant\"[Title/Abstract] OR \"heparin\"[Title/Abstract] OR \"warfarin\"[Title/Abstract] OR \"rivaroxaban\"[Title/Abstract] OR \"bleeding\"[Title/Abstract])"
+    },
+    {
+      "name": "mesh:interventionPERT",
+      "query": "(\"Venous Thromboembolism\"[mh] OR \"Pulmonary Embolism\"[mh] OR \"Venous Thrombosis\"[mh]) AND 2006:2026[dp] AND (PERT[tiab] OR catheter[tiab] OR thrombectomy[tiab] OR thrombolysis[tiab] OR filter[tiab] OR endovascular[tiab])",
+      "count": 7461,
+      "queryTranslation": "(\"Venous Thromboembolism\"[MeSH Terms] OR \"Pulmonary Embolism\"[MeSH Terms] OR \"Venous Thrombosis\"[MeSH Terms]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"PERT\"[Title/Abstract] OR \"catheter\"[Title/Abstract] OR \"thrombectomy\"[Title/Abstract] OR \"thrombolysis\"[Title/Abstract] OR \"filter\"[Title/Abstract] OR \"endovascular\"[Title/Abstract])"
+    },
+    {
+      "name": "mesh:realWorldCohort",
+      "query": "(\"Venous Thromboembolism\"[mh] OR \"Pulmonary Embolism\"[mh] OR \"Venous Thrombosis\"[mh]) AND 2006:2026[dp] AND (\"real-world\"[tiab] OR cohort[tiab] OR registry[tiab] OR epidemiology[tiab])",
+      "count": 9183,
+      "queryTranslation": "(\"Venous Thromboembolism\"[MeSH Terms] OR \"Pulmonary Embolism\"[MeSH Terms] OR \"Venous Thrombosis\"[MeSH Terms]) AND 2006/01/01:2026/12/31[Date - Publication] AND (\"real-world\"[Title/Abstract] OR \"cohort\"[Title/Abstract] OR \"registry\"[Title/Abstract] OR \"epidemiology\"[Title/Abstract])"
+    }
+  ]
+}

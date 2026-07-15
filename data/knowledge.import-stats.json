@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-06-14T05:54:35.678Z",
+  "sources": [
+    {
+      "file": "/Users/zgj/Library/Mobile Documents/com~apple~CloudDocs/Research/科研/VTE文献矩阵/03_筛选矩阵/优先阅读清单_模型指南介入.csv",
+      "tier": "priority",
+      "rows": 229
+    },
+    {
+      "file": "/Users/zgj/Library/Mobile Documents/com~apple~CloudDocs/Research/科研/VTE文献矩阵/03_筛选矩阵/VTE文献矩阵_精简工作版.csv",
+      "tier": "working",
+      "rows": 269
+    }
+  ],
+  "totalRows": 498,
+  "imported": 270,
+  "withAbstract": 238,
+  "withPdf": 101,
+  "coreGuidelines": 1,
+  "updatedAt": "2026-06-14T14:16:58.717Z"
+}
